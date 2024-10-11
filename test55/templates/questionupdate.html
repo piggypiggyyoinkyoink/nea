@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC>
+<html lang="en">
+    {% extends "basestaff.html"%}
+    {%load static%}
+    {% block title%}
+    Update Question
+    {% endblock %}
+
+    {%block navigation%}
+        <div class = "navigation">
+            
+            <div class = "element" onclick = "window.location = '/'"> <img class = "home" src = "{% static 'images/home_inactive.png'%}"> </div>
+            
+            <div class = "element" onclick = "window.location = '/class/list'"> <img class = "classes" src = "{% static 'images/classes_inactive.png'%}"> </div>
+            <div class = "element" onclick = "window.location = '/users/list'"> <img class = "students" src = "{% static 'images/students_inactive.png'%}"></div>
+            <div class = "element" onclick = "window.location = '/assignments/list'"> <img class = "assignments" src = "{% static 'images/assignments_inactive.png'%}"> </div>
+            <div class = "element" onclick = "window.location = '/questions/list'"> <img class = "questions" src = "{% static 'images/questions_inactive.png'%}"> </div>
+            <div class = "nameContainer"> <p class = "name"><span class = "name">{{currentUser.first_name}} {{currentUser.last_name}} </span>&nbsp;&nbsp;  |&nbsp;&nbsp; <a class = "logout" href = "/changepassword">Change Password</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a class = "logout" href = "{% url 'logout' %}">Logout</a></p> </div>
+        </div>
+    {%endblock%}
+
+
+    {% block content%}
+    <link rel = "stylesheet" href = "{%static 'css/questionupdate.css'%}">
+    <body>
+        <h1> Update Question </h1>
+        <div class = "content">
+            {%if issue is not None%}
+                <div class = "issue">
+                    <div class = "image"><img class = "issue" src = "{% static 'images/exclamation_red.png' %}"></div><div class = "message"><span>{{issue}}</span></div>
+                </div></div>
+            {%endif%}
+            <form method="post" action = "updaterecord/{{question.id}}">
+                {% csrf_token%}
+                <span class = "detail" id = "category"> Category: </span><br> <select id = "category" name="category">
+                    <option value = "{{myCategory.id}}">{{myCategory.name}}</option>
+                    {% for category in categories %}
+                    {% if category.id != myCategory.id%}
+                    <option value = "{{category.id}}">{{category.name}}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select> <br><br>
+                <span class = "detail" id = "questiontext">Question text:</span> <br> <input id = "questiontext" type = "text" name = "questionText" value = "{{question.questionText}}"> <br><br>
+                <span class = "detail" id = "opt1">Option 1:</span><br> <input id = "opt1" type = "text" name = "opt1" value = "{{question.opt1}}"> <br><br>
+                <span class = "detail" id = "opt2">Option 2:</span><br> <input id = "opt2" type = "text" name = "opt2" value = "{{question.opt2}}"> <br><br>
+                <span class = "detail" id = "opt3">Option 3:</span><br> <input id = "opt3" type = "text" name = "opt3" value = "{{question.opt3}}"> <br><br>
+                <span class = "detail" id = "opt4">Option 4:</span><br> <input id = "opt4" type = "text" name = "opt4" value = "{{question.opt4}}"> <br><br>
+                <span class = "detail" id = "correct">Correct answer:</span><br> <input id = "correct" type = "text" name = "answer" value = "{{question.answer}}"> <br><br>
+                <input type = "submit" value = "Submit">
+            </form>
+        </div>
+    </body>
+    {%endblock %}
+</html>
+    

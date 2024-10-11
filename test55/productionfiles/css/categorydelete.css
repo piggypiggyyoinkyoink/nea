@@ -1,0 +1,62 @@
+select{
+    border-radius:10px;
+    background-color:rgba(42, 99, 255, 0.511);
+    transition: transform 0.5s;
+    padding:5px;
+    width:30%;
+    border: 1px solid black;
+    text-align:center;
+    text-overflow: ellipsis;
+}
+
+select:focus{
+    background: url("/static/images/gold.gif") 100% no-repeat;
+    background-size:cover;
+}
+
+select:hover{
+    transform:scale(1.1)
+}
+
+input[type=submit]{
+    background-color: rgb(238, 144, 144);
+    font-size:35px;
+    border-radius: 10px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 60%);
+    margin-top: 20px;
+    transition: transform 0.25s, background-color 0.25s, box-shadow 0.25s;
+    cursor:pointer;
+
+}
+input[type=submit]:hover{
+    background-color:rgb(255, 25, 25);
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px;
+    
+}
+
+select{
+    font-size:25px;
+}
+
+h1, div.content{
+    text-align:center;
+}
+
+@keyframes a{
+    from {transform: translateY(-100px); opacity:0};
+    to {transform: translateY(0px) ; oapcity:1;}
+}
+
+h1, input, select{
+    animation-name:a;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+}
+
+select{
+    animation-delay:0.1s;
+}
+input{
+    animation-delay:0.2s;
+}

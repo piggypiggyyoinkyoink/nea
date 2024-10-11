@@ -1,0 +1,59 @@
+tr.even{
+    background-color:aqua;
+}
+tr.odd{
+    background-color:aliceblue;
+}
+td, tr, th, table{
+    border:2px solid blue;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    font-family:Tahoma, Geneva, Verdana, sans-serif;
+    text-align:center;
+}
+th{
+    background-color:#1ca0ee;
+}
+th{
+    padding:3px;
+}
+h1, div.content{
+    text-align:center;
+}
+table{
+    margin:auto;
+}
+
+th{
+    font-size:22px;
+
+}
+td{
+    font-size:18px;
+    padding:2px;
+
+}
+
+span.text, select{
+    font-size:16px;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    display:inline-block;
+}
+
+select{
+    border-radius:3px;
+}
+
+
+th.column{
+    width:160px;
+}
+
+#mee{
+    background: url("/static/images/gold.gif") 100% no-repeat;
+    font-weight:bold;
+}
+
+::-webkit-scrollbar{
+    display:none;
+}

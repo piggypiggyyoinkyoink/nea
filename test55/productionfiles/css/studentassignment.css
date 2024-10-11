@@ -1,0 +1,144 @@
+h1, div.content{
+    text-align:center;
+}
+ul{
+    display:inline-block;
+}
+button{
+    background-color: rgba(14, 225, 63, 0.703);
+    font-size:35px;
+    border-radius: 10px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 60%);
+    margin-top: 20px;
+    transition: transform 0.25s, background-color 0.25s, box-shadow 0.25s;
+
+}
+button:hover{
+    background-color:rgba(10, 160, 45, 0.703);
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px;
+    
+}
+
+span.detail, li{
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    font-size:20px;
+}
+ul{
+    list-style-type: "‣";
+    text-indent: 5px;
+    padding-inline-start: 0px;;
+}
+li{
+    margin-bottom:5px;
+}
+
+#topics{
+    font-weight:600;
+    font-size:25px;
+}
+
+div.correct{
+    border-radius:10px;
+    background-color:rgba(2, 47, 10, 0.782);
+    font-size:25px;
+    color:white;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    padding: 4px;
+    margin-top:5px;
+    border: 2px solid chartreuse;
+
+}
+
+div.incorrect{
+    border-radius:10px;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    font-size:25px;
+    padding: 4px;
+    margin-top:5px;
+    background-color:rgba(59, 2, 2, 0.782);
+    border: 2px solid red;
+    color:white;
+}
+
+div.unanswered{
+    border-radius:10px;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    font-size:25px;
+    padding: 4px;
+    margin-top:5px;
+    background-color:rgba(42, 25, 2, 0.782);
+    border: 2px solid rgb(199, 136, 0);
+    color:white;
+}
+
+div.questions{
+    width:fit-content;
+    margin:auto;
+}
+
+span.tick{
+    color:chartreuse;
+}
+
+span.cross{
+    color:red;
+}
+
+span.unanswered{
+    color: rgb(199, 136, 0);
+}
+
+@keyframes heading{
+    from {transform: translateY(-100px); opacity:0 };
+    to {transform: translateY(0px) ; opacity:1;}
+}
+
+h1, h2{
+    animation-name:heading;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+
+}
+
+@keyframes detail{
+    from {transform: translateY(100px); opacity:0%; scale:0.5; };
+    to {transform: translateY(0px) ; opacity:100%; scale:1;}
+}
+
+span.detail, div.questions, span.category, ul, li{
+    animation-name:detail;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+}
+
+#a{
+    animation-delay:0.25s;
+}
+#b{
+    animation-delay:0.35s;
+}
+#c, #topics{
+    animation-delay:0.45s;
+}
+h2, span.category, ul{
+    animation-delay:0.55s;
+}
+div.questions{
+    animation-delay:0.7s;
+}
+
+@keyframes submit{
+    from {transform: scale(0%) translateY(200px); opacity:0%;}
+    to{transform:scale(1) translateY(0px); opacity:100%;}
+}
+button{
+    animation-name:submit;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.65s;
+}
+
+span.detail{
+    display:inline-block;
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  {% extends 'base.html' %}
+
+  {% block title %}Past Assignments{% endblock %}
+  {%load static%}
+  {%block navigation%}
+  <div class = "navigation">
+          
+            
+    <div class = "element" onclick = "window.location = '/'"> <img class = "home" src = "{% static 'images/home_inactive.png'%}"> </div>
+    <div class = "element" onclick = "window.location = '/student/assignments/list'"> <img class = "assignments" src = "{% static 'images/assignments_active.gif'%}"> </div>
+    <div class = "element" onclick = "window.location = '/quiz/start'"> <img class = "quizzes" src = "{% static 'images/questions_inactive.png'%}"> </div>
+
+    <div class = "element" onclick = "window.location = '/leaderboard'"> <img class = "leaderboard" src = "{% static 'images/lb_inactive.png'%}"></div>
+    <div class = "nameContainer"> <p class = "name"><span class = "name">{{currentUser.first_name}} {{currentUser.last_name}} </span>&nbsp;&nbsp;  |&nbsp;&nbsp; <a class = "logout" href = "/changepassword">Change Password</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a class = "logout" href = "{% url 'logout' %}">Logout</a></p> </div>
+
+  </div>
+  {%endblock%}
+
+  {% block content %}
+  <link rel = "stylesheet" href="{%static 'css/studentassignmentlist.css' %}">
+  <h1> Assignments</h1>
+  <div class = "content">
+    <h2 id = "upcoming"> Incomplete </h2>
+    <div class = "upcomingAssignments">
+    {% if howMany != 0%}
+            {% for assignment in assignments%}
+              {%if assignment.overdue%}
+              <div class = "eachOverdueAssignment" onclick = "window.location = '/student/assignments/{{assignment.id}}'">
+                <span class = "assignmentName"> {{assignment.name}}</span><br>
+                <span class = "questions">{{assignment.questions}} questions</span><br>
+                <span class = "dueDate"> Due Date: {{assignment.dueDate}}</span>
+                
+                </div>
+              {%else%}
+                <div class = "eachAssignment" onclick = "window.location = '/student/assignments/{{assignment.id}}'">
+                <span class = "assignmentName"> {{assignment.name}}</span><br>
+                <span class = "questions">{{assignment.questions}} questions</span><br>
+                <span class = "dueDate"> Due Date: {{assignment.dueDate}}</span>
+                
+                </div>
+              {%endif%}
+            {% endfor %}
+    {%else%}
+      <p class = "no">You have no incomplete assignments</p>
+    {%endif%}
+    </div>
+    
+    <h2 id = "completed"> Completed </h2>
+    <div class = "completedAssignments">
+    {% for assignment in completedAssignments%}
+    {%if assignment.pass%}
+        <div class = "eachAssignmentPass" onclick = "window.location = '/student/assignments/{{assignment.assignmentID_id}}'">
+        <span class = "assignmentName"> {{assignment.title}}</span><br>
+        <span class = "date"> Completed {{assignment.dateCompleted}}</span><br>
+
+        <span class = "score"> Score: {{assignment.score}}%</span><br>
+        <span class = "grade"> Grade: {{assignment.grade}}</span>
+        </div>
+    {%else%}
+        <div class = "eachAssignmentFail" onclick = "window.location = '/student/assignments/{{assignment.assignmentID_id}}'">
+        <span class = "assignmentName"> {{assignment.title}}</span><br>
+        <span class = "date"> Completed {{assignment.dateCompleted}}</span><br>
+        <span class = "score"> Score: {{assignment.score}}%</span><br>
+        <span class = "grade"> Grade: {{assignment.grade}}</span>
+        </div>
+    {%endif%}
+    {% endfor %}
+    {%if howMany2 == 0%}
+    <p class = "no" id = "ca">You have no completed assignments</p>
+
+    {%endif%}
+    </div>
+    
+    <br><br>
+</div>
+  {%endblock%}
+</html>

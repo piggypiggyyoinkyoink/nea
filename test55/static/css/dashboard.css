@@ -1,0 +1,128 @@
+div.eachAssignment{
+    display:inline-block;
+    border: 3px solid #1ca0ee;
+    background-color:aliceblue;
+    border-radius: 8px;
+    text-align:center;
+    padding: 5px;
+    margin: 15px;
+    font-family:  Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.5s, background-color 0.5s;
+}
+
+div.eachAssignment:hover{
+    transform:scale(1.1);
+    cursor:pointer;
+    background-color:rgb(128, 218, 240);
+}
+.assignmentName{
+    font-size:25px;
+    font-weight: bold;
+}
+
+h1, div.content{
+    text-align:center;
+}
+
+@keyframes heading{
+    from {transform: translateY(-100px); opacity:0 };
+    to {transform: translateY(0px) ; opacity:1;}
+}
+@keyframes heading2{
+    from {transform: translateY(-100px); opacity:0 };
+    to {transform: translateY(0px) ; opacity:1;}
+}
+h1{
+    animation-name:heading;
+    animation-duration:1s;
+    
+}
+
+h2, .p{
+    animation-name:heading;
+    animation-duration:1s;
+    
+    animation-fill-mode: backwards;
+    
+}
+.p{
+    font-size:18px;
+
+}
+#upcoming{
+    animation-delay:0.25s;
+
+}
+#tg{
+    animation-delay:0.1s;
+}
+#categories{
+    animation-delay:0.5s;
+}
+
+
+@keyframes displayedAssignments{
+    from{transform:translateY(500px) scale(0.01);}
+    to{transform:scale(1) translateY(0px);}
+}
+.eachAssignment{
+    animation-name:displayedAssignments;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.1s;
+}
+
+::-webkit-scrollbar{
+    display:none;
+}
+
+h3, p{
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+a.quiz, a.quiz:visited{
+    color: #1ca0ee;
+    transition: color 0.5s;
+}
+a.quiz:hover{
+    color:#1c3cee;
+}
+
+
+.failCategory, .passCategory{
+    display:inline-block;
+    margin:5px;
+    margin-top:0px;
+    padding:4px;
+    background-color:aliceblue;
+    font-size:22px;
+}
+
+div.passCategory{
+    border: 2px solid chartreuse;
+    border-radius:10px;
+}
+
+div.failCategory{
+    border: 2px solid red;
+    border-radius:10px;
+}
+div.categories span{
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.bcName{
+    font-size:25px;
+    font-weight:600;
+}
+.bcAverage{
+    font-size:30px;
+}
+
+div.categories div{
+    animation-name:displayedAssignments;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.5s;
+}

@@ -1,0 +1,111 @@
+.displayedClasses{
+    display:inline-block;
+    border: 3px solid #1ca0ee;
+    background-color:aliceblue;
+    border-radius: 8px;
+    text-align:center;
+    padding: 5px;
+    margin: 15px;
+    font-family:  Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.5s, background-color 0.5s;
+    
+    
+}
+.displayedClasses:hover{
+    background-color: rgb(128, 218, 240);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.className{
+    font-size: 40px;
+    font-weight: bold;
+}
+.classStudents{
+    font-size: 25px;
+}
+.heading, .newClass{
+    display:inline-block;
+}
+.newClass{
+    margin-left: 15px;
+    text-align:center;
+    border: 2px solid green;
+    background-color:lightgreen;
+    border-radius: 8px;
+    font-size: 32px;
+    transition: transform 0.25s, background-color 0.25s;
+    display: inline-block;
+    width:100px;
+
+    
+}
+
+.newclass:hover{
+    transform: scale(1.1) translateX(45px);
+    cursor:pointer;
+    background-color: chartreuse;
+}
+span{
+    font-family:  Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container{
+    text-align:center;
+}
+
+div.heading{
+    text-align: center;
+    width: 200px;
+    margin:auto;
+}
+
+h1.heading, .newClass{
+    transform:translateX(50px)
+
+}
+
+div.headingcontainer, div.heading{
+    width: 100%;
+    display: block;
+}
+h1.heading{
+    display: inline-block;
+   
+}
+
+@keyframes heading{
+    from {transform: translateY(-100px) translateX(50px)};
+    to {transform: translateY(0px) translateX(50px);}
+}
+
+h1.heading{
+    animation-name:heading;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes new{
+    from {transform:scale(0.5) translateX(50px); opacity: 0%;}
+    to {transform:scale(1) translateX(50px); opacity: 100%;}
+}
+
+div.newClass{
+    animation-name:new;
+    animation-duration: 0.5s;
+    animation-delay: 0.75s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes displayedClasses{
+    from{transform:translateY(1000px) scale(0.01);}
+    to{transform:scale(1) translateY(0px);}
+}
+div.displayedClasses{
+    animation-name:displayedClasses;
+    animation-duration: 1s;
+    
+    animation-fill-mode: backwards;
+}
+::-webkit-scrollbar{
+    display:none;
+}

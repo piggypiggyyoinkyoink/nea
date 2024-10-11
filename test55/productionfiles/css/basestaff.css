@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+img{
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    text-align:center;
+    
+}
+.home{
+    margin-left: 25px;
+}
+.classes{
+    margin-left: 30px;
+}
+.students{
+    margin-left:26px;
+}
+.assignments{
+    margin-left:24px;
+}
+.questions{
+    margin-left:24px;
+}
+.navigation{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    
+    background-color:black;
+    /*background: url("/static/images/fire.gif") 100% 0 no-repeat fixed;*/
+    background-size: 100%;
+    box-shadow: 0px 5px rgba(118, 101, 101, 0.6);
+    z-index: 1000;
+
+}
+.nav2{
+    /*background: url("/static/images/fire.gif") 100% 0 no-repeat fixed;*/
+    background-size:100%;
+    
+}
+div.element{
+    display:inline-block;
+    width: 100px;
+    height:64px;
+    
+}
+
+div.element:hover{
+    background-color:rgba(72, 67, 67, 0.6);
+    cursor:pointer;
+}
+
+h1{
+    margin-top: 80px;
+    margin-left: 10px;
+    font-size:52px;
+}
+
+body{
+    /*background-image: linear-gradient(rgb(255, 123, 0), rgb(246, 255, 127),  aquamarine  );*/
+    background-color:rgba(202, 172, 172, 0.6);
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+}
+
+p.name{
+    color:white;
+    display:inline;
+    text-align:top;
+    font-family: "Orbitron", sans-serif;
+    font-size:14px;
+
+}
+span.name{
+    font-size:25px;
+    font-family: "Orbitron", sans-serif;
+}
+div.nameContainer{
+    position:absolute;
+    top:21px;
+    
+    
+    right:30px;
+}
+
+a.logout{
+    color:white;
+    text-decoration: none;
+}
+a.logout:visited{
+    color:white;
+}
+a.logout:hover{
+    text-decoration:underline;
+}
+
+
+
+select{
+    cursor:pointer;
+}
+
+input:not([type=text], [type=email], [type=password]){
+    cursor:pointer;
+}
+
+::placeholder{
+    font-style: italic;
+}
+
+span.name{
+    display:inline;
+}

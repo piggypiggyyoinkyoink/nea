@@ -1,0 +1,81 @@
+label, input{
+    cursor:pointer;
+}
+
+p, div.container{
+    margin:auto; width:fit-content
+}
+p{
+    font-family: 'Orbitron', serif;
+    font-size:24px;
+    margin-bottom:5px;
+}
+h1, div.submit{
+    text-align:center
+}
+
+input[type=submit]{
+    margin:auto;
+    display:inline-block;
+    background-color: rgba(14, 225, 63, 0.703);
+    font-size:35px;
+    border-radius: 10px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 60%);
+    margin-top: 20px;
+    transition: transform 0.25s, background-color 0.25s, box-shadow 0.25s; 
+}
+input[type=submit]:hover{
+    background-color:rgba(10, 160, 45, 0.703);
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px;
+    
+}
+label{
+    font-size:18px;
+    font-family:  Tahoma, Geneva, Verdana, sans-serif;
+}
+input[type=checkbox], input[type=radio]{
+    transform:scale(1.2)
+}
+
+@keyframes heading{
+    from {transform: translateY(-100px) };
+    to {transform: translateY(0px) ;}
+}
+
+h1{
+    animation-name:heading;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes detail{
+    from {transform: translateY(100px); opacity:0%; scale:0.5; };
+    to {transform: translateY(0px) ; opacity:100%; scale:1;}
+}
+
+p.heading, div.container{
+    animation-name:detail;
+    animation-duration: 1s;
+    animation-fill-mode:both;
+}
+
+p.heading{
+    animation-delay:0.2s;
+}
+div.container{
+    animation-delay:0.3s;
+
+}
+
+@keyframes submit{
+    from {transform: scale(0%) translateY(200px); opacity:0%;}
+    to{transform:scale(1) translateY(0px); opacity:100%;}
+}
+
+input[type="submit"]{
+    animation-name:submit;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.4s;
+}

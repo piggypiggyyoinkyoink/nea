@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends "basestaff.html" %}
+{%load static%}
+    <html>
+        {%block title%} {{student.first_name}} {{student.last_name}}'s Score{%endblock%}
+
+        {%block navigation%}
+        <div class = "navigation">
+            
+            <div class = "element" onclick = "window.location = '/'"> <img class = "home" src = "{% static 'images/home_inactive.png'%}"> </div>
+            
+            <div class = "element" onclick = "window.location = '/class/list'"> <img class = "classes" src = "{% static 'images/classes_inactive.png'%}"> </div>
+            <div class = "element" onclick = "window.location = '/users/list'"> <img class = "students" src = "{% static 'images/students_inactive.png'%}"></div>
+            <div class = "element" onclick = "window.location = '/assignments/list'"> <img class = "assignments" src = "{% static 'images/assignments_inactive.png'%}"> </div>
+            <div class = "element" onclick = "window.location = '/questions/list'"> <img class = "questions" src = "{% static 'images/questions_inactive.png'%}"> </div>
+            <div class = "nameContainer"> <p class = "name"><span class = "name">{{currentUser.first_name}} {{currentUser.last_name}} </span>&nbsp;&nbsp;  |&nbsp;&nbsp; <a class = "logout" href = "/changepassword">Change Password</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a class = "logout" href = "{% url 'logout' %}">Logout</a></p> </div>
+        </div>
+        {%endblock%}
+        <body>
+
+            {%block content%}
+            <link rel = "stylesheet" href = "{%static 'css/assignmentscores.css'%}">
+
+            <h1> {{student.first_name}} {{student.last_name}}</h1>
+            <div class = "content">
+                <div class = "questions">
+                {%for question in questions%}
+                    {%if question.studentAnswer is not None%}
+                        {%if question.correct%}
+                            <div class = "correct">{{question.questionText}} <span class = "tick">✔</span></div>
+                        {%else%}
+                            <div class = "incorrect">{{question.questionText}} <span class = "cross">⨉</span> </div>
+                        {%endif%}
+                    
+                    {%else%}
+                        <div class = "unanswered">{{question.questionText}} <span class = "unanswered">-</span> </div>
+
+                    {%endif%}
+                {%endfor%}
+                </div>
+            </div>
+            {%endblock%}
+        </body>
+    </html>

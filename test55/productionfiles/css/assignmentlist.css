@@ -1,0 +1,145 @@
+.displayedAssignments{
+    display:inline-block;
+    border: 3px solid #1ca0ee;
+    background-color:aliceblue;
+    border-radius: 8px;
+    text-align:center;
+    padding: 5px;
+    margin: 15px;
+    transition: transform 0.5s, background-color 0.5s;
+
+}
+
+.displayedAssignments:hover{
+    background-color: rgb(128, 218, 240);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.assignmentName{
+    font-size:25px;
+    font-weight: bold;
+}
+span {
+    font-family:  Tahoma, Geneva, Verdana, sans-serif;
+}
+.assignmentClass{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.heading{
+    margin-top: 15px;
+    margin-left: 15px;
+}
+.newAssignment{
+    margin-left: 15px;
+    text-align:center;
+    border: 2px solid green;
+    background-color:lightgreen;
+    border-radius: 8px;
+    font-size: 32px;
+    transition: transform 0.25s, background-color 0.25s;
+    width:100px;
+    transform:translateX(50px)
+
+}
+
+.newAssignment:hover{
+    transform: scale(1.1) translateX(45px);
+    cursor:pointer;
+    background-color: chartreuse;
+    
+
+}
+.superheading, .newAssignment{
+    display:inline-block;
+}
+.container2{
+    margin-left: 20px;
+    text-align: center;
+}
+.heading{
+    text-align:center;
+    font-size:30px;
+}
+.superheading{
+    width:100%;
+    text-align: center;
+}
+h1{
+    display:inline-block;
+    transform:translateX(50px)
+}
+
+
+@keyframes heading{
+    from {transform: translateY(-100px) translateX(50px)};
+    to {transform: translateY(0px);}
+}
+h1.heading2{
+    animation-name:heading;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes new{
+    from {transform:scale(0.5) translateX(50px); opacity: 0%;}
+    to {transform:scale(1) translateX(50px); opacity: 100%;}
+}
+
+div.newAssignment{
+    animation-name:new;
+    animation-duration: 0.5s;
+    animation-delay:0.5s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes upcoming{
+    from{transform:translateX(-2000px)};
+    to{transform:translateX(0px)};
+}
+
+#upcoming{
+    animation-name:upcoming;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.1s;
+}
+
+@keyframes past{
+    from{transform:translateX(2000px)};
+    to{transform:translateX(0px)};
+}
+#past{
+    animation-name:past;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.35s;
+}
+
+@keyframes displayedAssignments{
+    from{transform:translateY(1000px) scale(0.01);}
+    to{transform:scale(1) translateY(0px);}
+}
+
+#upcomingAssignment{
+    animation-name:displayedAssignments;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.2s;
+}
+
+#pastAssignment{
+    animation-name:displayedAssignments;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.45s;
+}
+
+::-webkit-scrollbar{
+    display:none;
+}
+
+body{
+    overflow-x:hidden;
+}

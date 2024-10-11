@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC>
+<html lang="en">
+    {% extends "basestaff.html" %}
+
+    {%block title%}
+    All Students
+    {% endblock %}
+
+    {%load static%}
+    {%block navigation%}
+    <div class = "navigation">
+           
+        <div class = "element" onclick = "window.location = '/'"> <img class = "home" src = "{% static 'images/home_inactive.png'%}"> </div>
+        
+        <div class = "element" onclick = "window.location = '/class/list'"> <img class = "classes" src = "{% static 'images/classes_inactive.png'%}"> </div>
+        <div class = "element" onclick = "window.location = '/users/list'"> <img class = "students" src = "{% static 'images/students_active.gif'%}"></div>
+        <div class = "element" onclick = "window.location = '/assignments/list'"> <img class = "assignments" src = "{% static 'images/assignments_inactive.png'%}"> </div>
+        <div class = "element" onclick = "window.location = '/questions/list'"> <img class = "questions" src = "{% static 'images/questions_inactive.png'%}"> </div>
+        <div class = "nameContainer"> <p class = "name"><span class = "name">{{currentUser.first_name}} {{currentUser.last_name}} </span>&nbsp;&nbsp;  |&nbsp;&nbsp; <a class = "logout" href = "/changepassword">Change Password</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a class = "logout" href = "{% url 'logout' %}">Logout</a></p> </div>
+    </div>
+    {%endblock%}
+    {% block content %}
+    <link rel = "stylesheet" href="{% static 'css/studentlist.css' %}">
+    <body>
+        <div class = "heading"><h1> All Students </h1></div><div class = "new" onclick = "window.location = '/users/add'" ><span> + New </span></div><br>
+        <div class = "search">
+            <form method = "post" action = "/users/list/search">
+                {%csrf_token%}
+                {% if search is not None%}
+                <input class = "search" type = "search" name = "search" placeholder = "Search..." autocomplete = "off" value = "{{search}}" onchange = "this.form.submit();" autofocus>
+                {%else%}
+                <input class = "search" type = "search" name = "search" placeholder = "Search..." autocomplete = "off" onchange = "this.form.submit();">
+                {%endif%}
+                <input class = "btnSearch" type = "submit" value = "Find">
+                
+            </form>
+            <button class = "btnClear" onclick = "window.location = '/users/list/'">Clear</button>
+        </div>
+        
+        <div class = "containercontainer">
+        <div class = "container">
+            {% if howMany == 0%}
+            <p> No search results found</p>
+            {% endif %}
+            {% for x in allStudents %}
+            {%if x.warnings%}
+            <div class = "eachStudentWarnings" onclick = "window.location = '/users/details/{{x.id}}'">
+                <span class = "name3" >{{ x.first_name }} {{ x.last_name}}</span><span class = "class">{{ x.className_id}}</span>
+                <span class = "name2" >{{ x.first_name }} {{ x.last_name}}</span><span class = "details"> Class: {{ x.className_id}}</span><span class = "details"> Target: {{x.targetGrade}}</span><span class = "details"> {{x.done}} / {{x.set}} Assignments complete</span>
+            </div>
+            {%else%}
+            <div class = "eachStudent" onclick = "window.location = '/users/details/{{x.id}}'">
+            <span class = "name3" >{{ x.first_name }} {{ x.last_name}}</span><span class = "class">{{ x.className_id}}</span>
+            <span class = "name2" >{{ x.first_name }} {{ x.last_name}}</span><span class = "details"> Class: {{ x.className_id}}</span><span class = "details"> Target: {{x.targetGrade}}</span><span class = "details"> {{x.done}} / {{x.set}} Assignments complete</span>
+            </div>
+            {%endif%}
+            {% endfor %}
+        </div></div>
+        
+      
+    </body>
+    {%endblock%}
+</html>

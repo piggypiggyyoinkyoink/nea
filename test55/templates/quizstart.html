@@ -1,0 +1,58 @@
+<!DOCTYPE html >
+{% extends "base.html" %}
+{%load static%}
+<html lang="en">
+    {% block title %}
+    Revision Quiz
+    {% endblock %}
+    {%block navigation%}
+    <div class = "navigation">
+            
+                
+        <div class = "element" onclick = "window.location = '/'"> <img class = "home" src = "{% static 'images/home_inactive.png'%}"> </div>
+        <div class = "element" onclick = "window.location = '/student/assignments/list'"> <img class = "assignments" src = "{% static 'images/assignments_inactive.png'%}"> </div>
+        <div class = "element" onclick = "window.location = '/quiz/start'"> <img class = "quizzes" src = "{% static 'images/questions_active.gif'%}"> </div>
+
+        <div class = "element" onclick = "window.location = '/leaderboard'"> <img class = "leaderboard" src = "{% static 'images/lb_inactive.png'%}"></div>
+        <div class = "nameContainer"> <p class = "name"><span class = "name">{{currentUser.first_name}} {{currentUser.last_name}} </span>&nbsp;&nbsp;  |&nbsp;&nbsp; <a class = "logout" href = "/changepassword">Change Password</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a class = "logout" href = "{% url 'logout' %}">Logout</a></p> </div>
+
+    </div>
+    {%endblock%}
+    <body>
+        {% block content %}
+        <link rel = "stylesheet" href = "{%static 'css/quizstart.css'%}">
+            <h1> Revision Quiz</h1>
+            <div class = "content">
+                <form method="post" action="/quiz/startquiz">
+                    {% csrf_token %}
+                    <p class = "heading"><b>Select Categories</b></p>
+                    <div class = "container">
+                        {% for category in categories%}
+                        <input type = "checkbox" name = "category{{category.id}}" id = "category{{category.id}}">
+                        <label for="category{{category.id}}">{{category.name}}</label>
+                        <br>
+
+                        {%endfor%}
+                    </div>
+                    <br>
+                    <p class = "heading"><b>Number of Questions</b></p> 
+                    <div class = "container">
+                        <input type = "radio" name = "questions" id = "10questions" value = "10" checked>
+                        <label for="10questions">10 Questions</label>
+                        <br>
+                        <input type = "radio" name = "questions" id = "20questions" value = "20">
+                        <label for="20questions">20 Questions</label> 
+                        <br>
+                        <br>
+                    </div>
+                    <div class = "submit">
+                        <input type = "submit" value = "Start Quiz">
+                    </div>
+                </form>
+            </div>           
+
+
+
+        {% endblock %}
+    </body>
+</html>

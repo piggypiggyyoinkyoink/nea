@@ -1,0 +1,60 @@
+{%extends "base.html"%}
+{%load static%}
+<!DOCTYPE html>
+<html>
+    {%block title%}
+    Leaderboard
+    {%endblock%}
+
+    {%block navigation%}
+    <div class = "navigation">
+            
+        <div class = "element" onclick = "window.location = '/'"> <img class = "home" src = "{% static 'images/home_inactive.png'%}"> </div>
+        <div class = "element" onclick = "window.location = '/student/assignments/list'"> <img class = "assignments" src = "{% static 'images/assignments_inactive.png'%}"> </div>
+        <div class = "element" onclick = "window.location = '/quiz/start'"> <img class = "quizzes" src = "{% static 'images/questions_inactive.png'%}"> </div>
+        <div class = "element" onclick = "window.location = '/leaderboard'"> <img class = "leaderboard" src = "{% static 'images/lb_active.gif'%}"></div>
+        <div class = "nameContainer"> <p class = "name"><span class = "name">{{currentUser.first_name}} {{currentUser.last_name}} </span>&nbsp;&nbsp;  |&nbsp;&nbsp; <a class = "logout" href = "/changepassword">Change Password</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a class = "logout" href = "{% url 'logout' %}">Logout</a></p> </div>
+
+    </div>
+    {%endblock%}
+
+    {%block content%}
+    <link rel = "stylesheet" href = "{%static 'css/leaderboard.css'%}">
+    <h1> Leaderboard</h1>
+    <div class = "content">
+        <form method = "POST" action = "">
+            {%csrf_token%}
+            <span class = "text">Sort By
+            <select class = "mode" name = "mode" onchange = "this.form.submit();" > 
+        
+                <option value = "noc" {%if mode == "noc"%} selected {%endif%}> Correct Answers</option>
+                <option value = "avg" {%if mode == "avg"%} selected{%endif%}>Assignment Average</option>
+                <option value = "tqa" {%if mode == "tqa"%} selected{%endif%}> Questions Answered</option>  
+            </select>
+            Show Class
+            <select class = "class" name = "class" onchange = "this.form.submit();">
+                {%if myClass == "all"%}
+                <option value = "all" selected>All Classes</option>
+                {%else%}
+                <option value = "all">All Classes</option>
+                {%endif%}
+                {%for class in classes%}
+                    {%if class.name == myClass%}<option value = "{{class.name}}" selected>{{class.name}}</option>
+                    {%else%}<option value = "{{class.name}}">{{class.name}}</option>
+                    
+                    {%endif%}
+                {%endfor%}
+            </select></span>
+        </form>
+
+        <div class = "table">
+        <table>
+            <tr> <th>#</th><th>Name</th><th>Class</th><th class = "column">{%if mode == "avg"%}Assignment Average{%elif mode == "tqa"%} Questions Answered{%else%}Correct Answers{%endif%}</th></tr>
+            {%for student in students%}
+            <tr {%if student.row|divisibleby:2 %} class = "even" {%else%} class = "odd"{%endif%} {%if student.username == request.user.username%}id = "mee"{%endif%}><td>{{student.index}}</td><td>{{student.first_name}} {{student.last_name}}</td><td>{{student.className_id}}</td><td> {{student.data}}</td>
+            {%endfor%}
+        </table>
+        </div>
+    </div>
+    {%endblock%}
+</html>

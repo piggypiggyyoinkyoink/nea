@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC>
+<html lang="en">
+    {% extends "basestaff.html" %}
+    {%load static%}
+    {%block title%}
+    {{student.first_name }} {{student.last_name}}
+    {% endblock %}
+
+    {%block navigation%}
+    <div class = "navigation">
+           
+        <div class = "element" onclick = "window.location = '/'"> <img class = "home" src = "{% static 'images/home_inactive.png'%}"> </div>
+        
+        <div class = "element" onclick = "window.location = '/class/list'"> <img class = "classes" src = "{% static 'images/classes_inactive.png'%}"> </div>
+        <div class = "element" onclick = "window.location = '/users/list'"> <img class = "students" src = "{% static 'images/students_inactive.png'%}"></div>
+        <div class = "element" onclick = "window.location = '/assignments/list'"> <img class = "assignments" src = "{% static 'images/assignments_inactive.png'%}"> </div>
+        <div class = "element" onclick = "window.location = '/questions/list'"> <img class = "questions" src = "{% static 'images/questions_inactive.png'%}"> </div>
+        <div class = "nameContainer"> <p class = "name"><span class = "name">{{currentUser.first_name}} {{currentUser.last_name}} </span>&nbsp;&nbsp;  |&nbsp;&nbsp; <a class = "logout" href = "/changepassword">Change Password</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a class = "logout" href = "{% url 'logout' %}">Logout</a></p> </div>
+    </div>
+    {%endblock%}
+
+
+    {% block content %}
+    <link rel = "stylesheet" href = "{% static 'css/studentdetails.css'%}">
+    <body>
+        <div class = "warnings">
+            {% for warning in warnings%}
+            <div class = "warning">
+                 <div class = "image"><img class = "warning" src = "{%static 'images/exclamation_red.png' %}"></div><div class = "message"> {{warning}}</div>
+            </div>
+            <br><br>
+            {%endfor%}
+        </div>
+        <h1> {{ student.first_name}} {{ student.last_name}}</h1>
+        <div class = "details">
+            <div class = "detail" id = "class"><span class = "details" id = "class"><b>Class:</b> {{ student.className}}</span></div>  <div class = "update" id = "updateClass"><span class = "update" onclick = "window.location = '/users/details/update/{{student.id}}'">Update</span></div><br>
+            <div class = "detail" id = "username"><span class = "details" id = "username"><b> Username: </b> {{ user.username}}</span></div> <br>
+            <div class = "detail" id = "target"><span class = "details" id = "target"><b>Target Grade:</b> {{ student.targetGrade}}</span></div> <div class = "update" id = "updateTarget"> <span class = "update" onclick = "window.location = '/users/updatetargetgrade/{{student.id}}/?url={{request.path}}'">Update</span></div><br>
+            <div class = "detail" id = "quizzes"><span class = "details" id = "quizzes"><b>Quizzes Completed:</b> {{student.noOfQuizzesCompleted}}</span></div><br>
+            <div class = "detail" id = "quizAverage"><span class = "details" id = "quizAverage"><b>Quiz Average:</b> {{student.quizAverage}}%</span></div><br>
+
+            <div class = "detail" id = "assignments"><span class = "details" id = "assignments"><b>Assignments Completed:</b> {{assignmentsComplete}} / {{assignmentsSet}}</span></div><br>
+
+            <div class = "detail" id = "average"><span class = "details" id = "average"><b>Assignment Average:</b> {{student.average}}%</span></div><br>
+            <br>
+            
+            
+            <div class = "container">
+                {%if bestCategory is not None%}
+                    <div class = "bestCategory">
+                        <span class = "bcName">Best Topic: <br><span>{{bestCategory.name}}</span></span><br>
+                        <span class = "bcAverage">{{bestCategory.average}}%</span><br>
+                        <span class = "bcTotal"> of {{bestCategory.total}} questions <br> answered correctly</span>
+                    </div>
+                {%endif%}
+                
+                {%if worstCategory is not None%}
+                    <div class = "worstCategory">
+                        <span class = "bcName">Worst Topic: <br><span>{{worstCategory.name}}</span></span><br>
+                        <span class = "bcAverage">{{worstCategory.average}}%</span><br>
+                        <span class = "bcTotal"> of {{worstCategory.total}} questions <br> answered correctly</span>
+                    </div>
+                {%endif%}
+                
+                    
+                
+            </div>
+            <br>
+            <div class = "reset"><span class = "reset" onclick = "window.location='/users/pwreset/{{student.id}}'">Reset Student Password</span></div>
+            <div class = "delete" ><span onclick = "window.location = '/users/details/delete/{{student.id}}'" class = "delete">Delete Student</span></div>
+
+        </div>
+        <br><br>
+
+    </body>
+    {% endblock %}
+</html>
+            

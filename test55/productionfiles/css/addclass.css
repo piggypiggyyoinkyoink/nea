@@ -1,0 +1,107 @@
+ div.heading{
+    text-align:center;
+   
+}
+div.form{
+    text-align:center;
+}
+
+.label{
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    font-size:34px;
+}
+
+input{
+    font-size: 30px;
+}
+
+input[type=text]{
+    border-radius:10px;
+    background-color:rgba(42, 99, 255, 0.511);
+    transition: transform 0.5s;
+    padding:5px;
+    width:30%;
+
+}
+
+input[type=text]:focus{
+    background: url("/static/images/gold.gif") 100% no-repeat;
+    background-size:cover;
+}
+
+input[type=text]:hover{
+    transform:scale(1.1)
+}
+
+input[type=submit]{
+    background-color: rgba(14, 225, 63, 0.703);
+    font-size:35px;
+    border-radius: 10px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 60%);
+    margin-top: 20px;
+    transition: transform 0.25s, background-color 0.25s, box-shadow 0.25s;
+
+}
+input[type=submit]:hover{
+    background-color:rgba(10, 160, 45, 0.703);
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px;
+    
+}
+
+html{
+    height:100%;
+}
+
+@keyframes heading{
+    from {transform: translateY(-100px) };
+    to {transform: translateY(0px) ;}
+}
+
+div.heading{
+    animation-name:heading;
+    animation-duration:1s;
+    animation-fill-mode: both;
+}
+
+@keyframes label{
+    from {transform: translateY(-100px) scale(0); opacity:0%};
+    to {transform: translateY(0px) scale(1); opacity: 100%;}
+}
+
+div.label{
+    animation-name:label;
+    animation-duration:1s;
+    animation-fill-mode:both;
+    animation-delay:0.5s;
+}
+@keyframes input{
+    from {transform: translateY(-50px) scale(0); opacity:0%};
+    to {transform: translateY(0px) scale(1); opacity: 100%;}
+}
+div.input{
+    animation-name:label;
+    animation-duration:1s;
+    animation-fill-mode:backwards;
+    animation-delay:0.75s;
+}
+
+@keyframes submit{
+    from {transform: scale(0%) translateY(200px); opacity:0%;}
+    to{transform:scale(1) translateY(0px); opacity:100%;}
+}
+
+div.submit{
+    animation-name:submit;
+    animation-duration:1s;
+    animation-fill-mode:backwards;
+    animation-delay:1s;
+}
+
+::placeholder{
+    color:black;
+    opacity:70%;
+}
+::-webkit-scrollbar{
+    display:none;
+}

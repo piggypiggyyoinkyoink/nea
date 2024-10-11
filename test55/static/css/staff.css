@@ -1,0 +1,86 @@
+.button{
+    display:inline-block;
+    border: 3px solid #1ca0ee;
+    background-color:aliceblue;
+    border-radius: 8px;
+    text-align:center;
+    padding: 5px;
+    margin: 15px;
+    width:200px;
+    font-family:  Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.6s, background-color 0.6s;
+    
+}
+.button:hover{
+    background-color: rgb(128, 218, 240);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+
+.button span{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.button img{
+    width:100px;
+    height:auto;
+}
+
+#newassignment{
+    transform:translateX(8px);
+}
+
+#newquestion{
+    transform:translateX(8.5px);
+
+}
+#newstudent{
+    transform:translateX(8px);
+
+}
+#newclass{
+    transform:translateX(8px);
+}
+
+h1, div.content{
+    text-align: center;
+}
+
+@keyframes heading{
+    from {transform: translateY(-100px); opacity:0 };
+    to {transform: translateY(0px); opacity:1 ;}
+}
+
+@keyframes heading2{
+    from {transform: translateY(-200px); opacity:0 };
+    to {transform: translateY(0px); opacity:1 ;}
+}
+h1{
+    animation-name:heading;
+    animation-duration:1s;
+    animation-fill-mode: both;
+}
+
+h2{
+    animation-name:heading2;
+    animation-duration:1s;
+    animation-fill-mode: both;
+    animation-delay:0.2s;
+}
+
+@keyframes buttons{
+    from{transform:translateY(100px) scale(0.01);}
+    to{transform:scale(1) translateY(0px);}
+}
+
+div.button{
+    animation-name:buttons;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.3s;
+}
+::-webkit-scrollbar{
+    display:none;
+}

@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+div.content{
+    margin: auto;
+    width: 50%;
+    height: 50%;
+    background-color:rgba(84, 0, 120, 0.5);
+    border-radius: 25px;
+    
+}
+h1{
+    text-align: center;
+    font-size:45px;
+}
+
+p{
+    text-align:center;
+}
+input{
+    border: 3px solid darkorchid;
+    border-radius: 10px;
+    width: 80%;
+    height: 10%;
+    font-size: 30px;
+    background-color: rgba(0, 0, 10, 20%);
+    margin-top: 10px;
+    transition: transform 0.25s;
+
+}
+input:hover{
+    border-color: goldenrod;
+    transform: scale(1.05)
+}
+input:focus{
+    
+    background: url("/static/images/gold.gif") 100% no-repeat;
+    background-size:cover;
+}
+input:autofill, input:-webkit-autofill{
+    border: 3px solid red;
+    font-size: 30px;
+}
+
+
+body{
+    background-image: linear-gradient(red, blue);
+}
+label{
+    font-family: "Orbitron", serif;
+    font-size: 30px;
+    margin-top: 10px;
+    display:inline-block;
+    
+}
+
+button{
+    background-color: rgba(14, 225, 63, 0.703);
+    font-size:35px;
+    border-radius: 10px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 60%);
+    margin-top: 20px;
+    transition: transform 0.25s, background-color 0.25s, box-shadow 0.25s;
+
+}
+button:hover{
+    background-color:rgba(10, 160, 45, 0.703);
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px;
+    
+}
+
+@keyframes heading{
+    from {transform: translateY(-100px); opacity:0%};
+    to {transform: translateY(0px); opacity:100%}
+}
+
+h1{
+    animation-name:heading;
+    animation-duration:1s;
+    animation-fill-mode: both;
+}
+
+@keyframes login{
+    from {transform: translateY(-200px) scale(0%); opacity: 0%;}
+    to{transform: translateY(0px) scale(1); opacity: 100%;}
+}
+
+div.content{
+    animation-name:login;
+    animation-duration:1.5s;
+    animation-fill-mode: backwards;
+
+}
+
+@keyframes heading2{
+    from {transform: translateY(-10px); opacity:0%};
+    to {transform: translateY(0px); opacity:100%}
+}
+#username{
+    animation-name:heading2;
+    animation-duration:0.75s;
+    animation-delay:1s;
+    animation-fill-mode:backwards;
+}
+
+#password{
+    animation-name:heading2;
+    animation-duration:0.75s;
+    animation-delay:1.25s;
+    animation-fill-mode:backwards;
+}
+@keyframes input{
+    from{transform:scale(0); opacity:0%;}
+    to{transform:scale(1); opacity:100%}
+}
+
+
+#id_username{
+    animation-name:input;
+    animation-duration:0.75s;
+    animation-delay:1s;
+    animation-fill-mode: backwards;
+}
+
+#id_password{
+    animation-name:input;
+    animation-duration:0.75s;
+    animation-delay:1.25s;
+    animation-fill-mode: backwards;
+}
+
+#letsago{
+    animation-name:input;
+    animation-duration:0.75s;
+    animation-delay:1.5s;
+    animation-fill-mode: backwards;
+}
+::-webkit-scrollbar{
+    display:none;
+}
+
+
+div.issue{
+    height:60px;
+    border-radius:9px;
+    border: 2px solid red;
+    background-color: rgba(42, 36, 36, 0.8);
+    width:fit-content;
+    margin:auto;
+    padding:3px;
+    margin-bottom:15px;
+}
+
+img.issue{
+    display:inline-block;
+    margin:0;
+}
+div.image{
+    margin:5px;
+}
+div.image, div.message{
+    display:inline-block;
+}
+
+div.message{
+    color:white;
+    transform:translateY(-15px);
+    margin:2px;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+
+@keyframes warning{
+    from {transform: translateY(-200px) scale(0); opacity:0%};
+    to {transform: translateY(0px) scale(1); opacity: 100%};
+}
+
+@keyframes flash{
+    0% {transform:scale(1);}
+    50%{transform:scale(1.1);}
+    100%{transform:scale(1);}
+}
+
+div.container{
+    animation-name:warning;
+    animation-duration:1s;
+    animation-delay:0.1s;
+    animation-fill-mode: backwards;
+}
+
+div.issue{
+    
+
+    animation-name:flash;
+    animation-duration:2s;
+    animation-iteration-count: infinite;
+    
+}

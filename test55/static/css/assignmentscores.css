@@ -1,0 +1,82 @@
+h1, div.content{
+    text-align:center;
+}
+
+div.correct{
+    border-radius:10px;
+    background-color:rgba(2, 47, 10, 0.782);
+    font-size:25px;
+    color:white;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    padding: 4px;
+    margin-top:5px;
+    border: 2px solid chartreuse;
+
+}
+
+div.incorrect{
+    border-radius:10px;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    font-size:25px;
+    padding: 4px;
+    margin-top:5px;
+    background-color:rgba(59, 2, 2, 0.782);
+    border: 2px solid red;
+    color:white;
+}
+
+div.unanswered{
+    border-radius:10px;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    font-size:25px;
+    padding: 4px;
+    margin-top:5px;
+    background-color:rgba(42, 25, 2, 0.782);
+    border: 2px solid rgb(199, 136, 0);
+    color:white;
+}
+
+div.questions{
+    width:fit-content;
+    margin:auto;
+}
+
+span.tick{
+    color:chartreuse;
+}
+
+span.cross{
+    color:red;
+}
+
+span.unanswered{
+    color: rgb(199, 136, 0);
+}
+
+@keyframes heading{
+    from {transform: translateY(-100px)};
+    to {transform: translateY(0px);}
+}
+
+h1{
+    animation-name:heading;
+    animation-duration:1s;
+    animation-fill-mode: both;
+
+}
+
+@keyframes questions{
+    from{transform:translateY(100px) scale(0.01);}
+    to{transform:scale(1) translateY(0px);}
+}
+
+div.questions{
+    animation-name:questions;
+    animation-duration:1s;
+    animation-fill-mode: both;
+    animation-delay:0.25s;
+}
+
+::-webkit-scrollbar{
+    display:none;
+}

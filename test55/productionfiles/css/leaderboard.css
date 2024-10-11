@@ -1,0 +1,96 @@
+tr.even{
+    background-color:aqua;
+}
+tr.odd{
+    background-color:aliceblue;
+}
+td, tr, th, table{
+    border:2px solid blue;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    font-family:Tahoma, Geneva, Verdana, sans-serif;
+    text-align:center;
+}
+th{
+    background-color:#1ca0ee;
+}
+th{
+    padding:3px;
+}
+h1, div.content{
+    text-align:center;
+}
+table{
+    margin:auto;
+}
+
+th{
+    font-size:22px;
+
+}
+td{
+    font-size:18px;
+    padding:2px;
+
+}
+
+span.text, select{
+    font-size:16px;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    display:inline-block;
+}
+
+select{
+    border-radius:3px;
+}
+/*
+@keyframes heading{
+    from {transform: translateY(-100px); opacity:0 };
+    to {transform: translateY(0px) ; opacity:1;}
+
+}
+h1{
+    animation-name:heading;
+    animation-duration:1s;
+}
+
+span.text, select{
+    animation-name:heading;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+    
+}
+
+span.text{
+    animation-delay:0.3s;
+}
+select{
+    animation-delay:0s;
+}
+
+@keyframes table{
+    from{transform:translateY(500px) scale(0.01);}
+    to{transform:scale(1) translateY(0px);}
+}
+
+table{
+    animation-name:table;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.3s;
+}
+*/
+
+
+th.column{
+    width:160px;
+}
+
+#mee{
+    background: url("/static/images/gold.gif") 100% no-repeat;
+    font-weight:bold;
+}
+
+::-webkit-scrollbar{
+    display:none;
+}

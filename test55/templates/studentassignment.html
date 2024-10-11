@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends "base.html" %}
+{%load static%}
+{% block title%}
+{{assignment.name}}
+
+{% endblock %}
+{%block navigation%}
+<div class = "navigation">
+          
+            
+    <div class = "element" onclick = "window.location = '/'"> <img class = "home" src = "{% static 'images/home_inactive.png'%}"> </div>
+    <div class = "element" onclick = "window.location = '/student/assignments/list'"> <img class = "assignments" src = "{% static 'images/assignments_inactive.png'%}"> </div>
+    <div class = "element" onclick = "window.location = '/quiz/start'"> <img class = "quizzes" src = "{% static 'images/questions_inactive.png'%}"> </div>
+
+    <div class = "element" onclick = "window.location = '/users/list'"> <img class = "leaderboard" src = "{% static 'images/lb_inactive.png'%}"></div>
+    <div class = "nameContainer"> <p class = "name"><span class = "name">{{currentUser.first_name}} {{currentUser.last_name}} </span>&nbsp;&nbsp;  |&nbsp;&nbsp; <a class = "logout" href = "/changepassword">Change Password</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a class = "logout" href = "{% url 'logout' %}">Logout</a></p> </div>
+
+  </div>
+{%endblock%}
+
+{% block content %}
+<link rel = "stylesheet" href = "{%static 'css/studentassignment.css'%}">
+    
+        
+    <body>
+        <h1> {{assignment.name}}</h1>
+        <div class = "content">
+            {%if studentAssignment.completed%}
+            <span class = "detail" id = "a"> <b>Completed: </b>{{studentAssignment.dateCompleted}}</span><br>
+            <span class = "detail" id = "b"> <b>Score: </b>{{studentAssignment.score}}%</span><br>
+            <span class = "detail" id = "c"> <b>Grade: </b>{{studentAssignment.grade}}</span><br>
+
+            <h2 class = "questions">Questions</h2>
+            <div class = "questions">
+            {%for question in questions%}
+                {%if question.studentAnswer != None%}
+                    {%if question.correct %}
+                        <div class = "correct">{{question.questionText}} <span class = "tick">✔</span></div>
+                    {%else%}
+                        <div class = "incorrect">{{question.questionText}} <span class = "cross">⨉</span> </div>
+                    {%endif%}
+                
+                {%else%}
+                    <div class = "unanswered">{{question.questionText}} <span class = "unanswered">-</span> </div>
+
+                {%endif%}
+            {%endfor%}
+            </div>
+
+            {%else%}
+            <span class = "detail" id = "a"> <b>Number of questions: </b> {{thismany}}  </span><br><br>
+            <span class = "detail" id = "b">  <b>Date Due</b>: {{assignment.dueDate}}</span><br><br><br>
+            <span class = "detail" id = "topics"> Topics:</span><br>
+            <ul>
+            {%for category in categories%}
+            
+                <li><span class = "category">{{category.name}}</span></li>
+            
+            {%endfor%}
+            </ul><br>
+            <button class = "submit" onclick = "window.location = '/student/assignments/{{assignment.id}}/question'"><span>Start Assignment</span></button>
+            {%endif%}
+        </div>
+    </body>
+{% endblock %}
+</html>

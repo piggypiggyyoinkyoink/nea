@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+    
+    {% extends "basestaff.html" %}
+    {%load static%}
+    
+    <head>
+        {% block title%}
+        Home
+        {% endblock %}
+        
+    </head>
+    {%block navigation%}
+    <div class = "navigation">
+        
+           
+            <div class = "element" onclick = "window.location = '/'"> <img class = "home" src = "{% static 'images/home_active.gif'%}"> </div>
+            
+            <div class = "element" onclick = "window.location = '/class/list'"> <img class = "classes" src = "{% static 'images/classes_inactive.png'%}"> </div>
+            <div class = "element" onclick = "window.location = '/users/list'"> <img class = "students" src = "{% static 'images/students_inactive.png'%}"></div>
+            <div class = "element" onclick = "window.location = '/assignments/list'"> <img class = "assignments" src = "{% static 'images/assignments_inactive.png'%}"> </div>
+            <div class = "element" onclick = "window.location = '/questions/list'"> <img class = "questions" src = "{% static 'images/questions_inactive.png'%}"> </div>
+            <div class = "nameContainer"> <p class = "name"><span class = "name">{{currentUser.first_name}} {{currentUser.last_name}} </span>&nbsp;&nbsp;  |&nbsp;&nbsp; <a class = "logout" href = "/changepassword">Change Password</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a class = "logout" href = "{% url 'logout' %}">Logout</a></p> </div>
+        
+    </div>
+    {%endblock%}
+    
+    {% block content%}
+    <link rel = "stylesheet" href = "{% static '/css/staff.css'%}">
+    <body>
+    
+        <h1> Welcome, {{currentUser.first_name}} </h1> 
+        
+        <div class = "content">
+            <div class = "shortcuts">
+                <h2>Shortcuts</h2>
+                <div class = "button" onclick = "window.location='/assignments/add'">
+                    <img id = "newassignment" class = "buttonimg" src = "{%static 'images/newassignment.png'%}"><br>
+                    <span class = "buttonText"> New Assignment</span>
+                </div>
+                <div class = "button" onclick = "window.location='/questions/add'">
+                    <img id = "newquestion" class = "buttonimg" src = "{%static 'images/newquestion.png'%}"><br>
+
+                    <span class = "buttonText"> New Question</span>
+                </div>
+                <div class = "button" onclick = "window.location='/users/add'">
+                    <img id = "newstudent" class = "buttonimg" src = "{%static 'images/newstudent.png'%}"><br>
+
+                    <span class = "buttonText"> New Student</span>
+                </div>
+                <div class = "button" onclick = "window.location='/class/add'">
+                    <img id = "newclass" class = "buttonimg" src = "{%static 'images/newclass.png'%}"><br>
+
+                    <span class = "buttonText"> New Class</span>
+                </div>
+                <div class = "button" onclick = "window.location='/users/addteacher'">
+                    <img id = "newteacher" class = "buttonimg" src = "{%static 'images/newteacher.png'%}"><br>
+
+                    <span class = "buttonText"> New Teacher</span>
+                </div>
+            </div>
+        </div>
+    </body>
+    {% endblock%}
+</html>

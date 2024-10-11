@@ -1,0 +1,153 @@
+div.eachAssignment, div.eachAssignmentPass, div.eachAssignmentFail{
+    display:inline-block;
+    border: 3px solid #1ca0ee;
+    background-color:aliceblue;
+    border-radius: 8px;
+    text-align:center;
+    padding: 5px;
+    margin: 15px;
+    font-family:  Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.5s, background-color 0.5s;
+}
+
+div.eachOverdueAssignment{
+    display:inline-block;
+    border: 3px solid #ee1c1c;
+    background-color:lightcoral;
+    border-radius: 8px;
+    text-align:center;
+    padding: 5px;
+    margin: 15px;
+    font-family:  Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.5s, background-color 0.5s;
+}
+
+
+div.eachAssignment:hover{
+    transform:scale(1.1);
+    cursor:pointer;
+    background-color:rgb(128, 218, 240);
+}
+
+div.eachOverdueAssignment:hover{
+    transform:scale(1.1);
+    cursor:pointer;
+    background-color:rgb(255, 191, 191);
+}
+div.eachAssignmentPass{
+    border: 3px solid green;
+    background-color:lightgreen;
+    
+
+}
+
+div.eachAssignmentPass:hover{
+    background-color:rgb(105, 242, 105);
+    transform:scale(1.1);
+    cursor:pointer;
+}
+
+div.eachAssignmentFail{
+    border:3px solid red;
+    background-color: lightcoral;
+}
+
+div.eachAssignmentFail:hover{
+    background-color:rgb(237, 91, 91);
+    transform:scale(1.1);
+    cursor:pointer;
+}
+
+.assignmentName{
+    font-size:25px;
+    font-weight: bold;
+}
+
+h1, div.content{
+    text-align:center;
+}
+
+@keyframes heading{
+    from {transform: translateY(-100px); opacity:0 };
+    to {transform: translateY(0px) ; opacity:1;}
+}
+@keyframes heading2{
+    from {transform: translateY(-100px); opacity:0 };
+    to {transform: translateY(0px) ; opacity:1;}
+}
+h1{
+    animation-name:heading;
+    animation-duration:1s;
+    
+}
+
+h2{
+    animation-name:heading;
+    animation-duration:1s;
+    
+    animation-fill-mode: backwards;
+    
+}
+
+#upcoming{
+    animation-delay:0.1s;
+
+}
+#completed{
+    animation-delay:0.4s;
+}
+
+h3, .p{
+    animation-name:heading;
+    animation-duration:1s;
+    
+    animation-fill-mode: backwards;
+    animation-delay:0.6s;
+}
+@keyframes displayedAssignments{
+    from{transform:translateY(500px) scale(0.01);}
+    to{transform:scale(1) translateY(0px);}
+}
+.eachAssignment, .eachOverdueAssignment{
+    animation-name:displayedAssignments;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.1s;
+}
+
+::-webkit-scrollbar{
+    display:none;
+}
+.eachAssignmentPass, .eachAssignmentFail{
+    animation-name:displayedAssignments;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.4s;
+}
+
+h3, p{
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+a.quiz, a.quiz:visited{
+    color: #1ca0ee;
+}
+a.quiz:hover{
+    color:#1c3cee;
+}
+
+.no{
+    
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    font-size:18px;
+    animation-name:heading;
+    animation-duration:1s;
+    animation-delay:0.25s;
+    animation-fill-mode: backwards;
+}
+
+#ca{
+    animation-delay:0.55s;
+
+}

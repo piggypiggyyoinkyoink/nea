@@ -1,0 +1,30 @@
+h1, h2, div.container{
+    text-align:center;
+}
+
+div.answer{
+    display:inline-block;
+    border-radius:15px;
+    font-size:25px;
+    border: 3px solid #1ca0ee;
+    padding:10px;
+    margin: 25px;
+    background:aliceblue;
+    width:400px;
+    height:160px;
+    transition: transform 0.5s, background-color 0.5s;
+}
+
+div.answerContainer{
+    width:400px;
+    height:160px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+div.answer:hover{
+    transform:scale(1.1);
+    background-color:rgb(128, 218, 240);
+    cursor:pointer;
+}

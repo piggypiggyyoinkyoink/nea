@@ -1,0 +1,261 @@
+.student{
+    display:inline-block;
+    border: 3px solid #1ca0ee;
+    background-color:aliceblue;
+    border-radius: 8px;
+    text-align:center;
+    padding: 5px;
+    margin: 15px;
+    font-family:  Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.5s, background-color 0.5s;
+
+}
+
+.studentWarnings{
+    display:inline-block;
+    border: 3px solid #ee1c1c;
+    background-color:lightcoral;
+    border-radius: 8px;
+    text-align:center;
+    padding: 5px;
+    margin: 15px;
+    font-family:  Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.5s, background-color 0.5s;
+}
+
+.studentName{
+    font-size: 30px;
+    font-weight: bolder;
+}
+.studentClass{
+    font-size:20px;
+    font-weight: bold;
+}
+.student:hover, .studentWarnings:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.student:hover{
+    background-color: rgb(128, 218, 240);
+
+}
+
+.studentWarnings:hover{
+    background-color:rgba(255, 0, 0, 0.525);
+}
+div.heading, div.new, div.superheading, div.back, div.assignment{
+    display:inline-block;
+
+}
+div.new{
+    margin-left: 10px;
+    text-align:center;
+    border: 2px solid green;
+    background-color:lightgreen;
+    border-radius: 5px;
+    font-size: 25px;
+    transition: transform 0.25s, background-color 0.25s;
+    width:80px;
+    
+}
+
+div.new:hover{
+    transform: scale(1.1);
+    cursor:pointer;
+    background-color: chartreuse;
+}
+
+div.back{
+    display:inline-block;
+    width: 50px;
+    height: 50px;
+    background: url("/static/images/back.png") 100% no-repeat;
+    background-size: contain;
+    cursor: pointer;
+}
+div.back:hover{
+    background: url("/static/images/back_active.png") 100% no-repeat;
+    background-size: contain;
+}
+
+div.superheading{
+    display:inline-block;
+    font-size: 20px;
+   /* height:50px;
+    transform:translateY(-68px);*/
+    margin-left: 5px;
+}
+span{
+    font-family:  Tahoma, Geneva, Verdana, sans-serif;
+}
+
+div.container, div.heading{
+    text-align: center;
+    width:100%;
+}
+div.heading{
+    font-size:30px;
+    transform:translateX(40px)
+}
+h2, div.new{
+    display:inline-block;
+}
+
+div.assignment{
+    display:inline-block;
+    border: 3px solid #1ca0ee;
+    background-color:aliceblue;
+    border-radius: 8px;
+    text-align:center;
+    padding: 5px;
+    margin: 15px;
+    font-family:  Tahoma, Geneva, Verdana, sans-serif;
+    transition: transform 0.5s, background-color 0.5s;
+
+}
+div.assignment:hover{
+    background-color: rgb(128, 218, 240);
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+span.assignmentName{
+    font-weight:bold;
+    font-size:25px;
+    padding: 5px;
+}
+div.superheading, h1{
+    display:inline-block;
+    text-align:center;
+    width:100%;
+    margin-left:0;
+    
+    
+}
+
+h2{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-bottom: 10px;
+    margin-top:20px;
+}
+div.back{
+    position:relative;
+    z-index:10000;
+    top:68px;
+    left:36%;
+}
+div.delete{
+    display:block;
+    margin:auto;
+    width:142px;
+}
+span.delete{
+    
+    text-align:center;
+    border: 2px solid rgb(255, 25, 25);
+    background-color:rgb(238, 144, 144);
+    border-radius: 8px;
+    font-size: 25px;
+    padding: 2px;
+    transition: transform 0.25s, background-color 0.25s;
+    display:inline-block;
+    padding:2px;
+    
+
+}
+span.delete:hover{
+    transform: scale(1.1);
+    cursor:pointer;
+    background-color: rgb(255, 115, 0);
+}
+
+@keyframes superheading{
+    from {transform: translateY(-100px)};
+    to {transform: translateY(0px);}
+}
+
+div.superheading{
+    animation-name:superheading;
+    animation-duration:1s;
+    animation-fill-mode: both;
+}
+
+@keyframes studentHeading{
+    from{transform:translateX(-2000px)};
+    to{transform:translateX(0px)};
+}
+
+ #students h2{
+    animation-name: studentHeading;
+    animation-delay:0.2s;
+    animation-duration:1s;
+    animation-fill-mode: both;
+}
+
+@keyframes assignmentHeading{
+    from{transform:translateX(2000px)};
+    to{transform:translateX(0px)};
+}
+
+#assignments h2{
+    animation-name: assignmentHeading;
+    animation-delay:0.5s;
+    animation-duration:1s;
+    animation-fill-mode: both;
+}
+@keyframes new{
+    from {transform:scale(0.5); opacity: 0%;}
+    to {transform:scale(1); opacity: 100%;}
+}
+
+#newStudent{
+    animation-name:new;
+    animation-delay:1.2s;
+    animation-fill-mode: backwards;
+    animation-duration: 0.5s;
+}
+
+#newAssignment{
+    animation-name:new;
+    animation-delay:1.5s;
+    animation-fill-mode: backwards;
+    animation-duration: 0.5s;
+}
+@keyframes displayedStudents{
+    from{transform:translateY(1000px) scale(0.01);}
+    to{transform:scale(1) translateY(0px);}
+}
+
+.student, .studentWarnings{
+    animation-name:displayedStudents;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.3s;
+}
+
+.assignment{
+    animation-name:displayedStudents;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.6s;
+}
+::-webkit-scrollbar{
+    display:none;
+}
+
+body{
+    overflow-x:hidden;
+}
+@keyframes delete{
+    from {transform: scale(0%) translateY(200px); opacity:0%;}
+    to{transform:scale(1) translateY(0px); opacity:100%;}
+}
+
+div.delete{
+    animation-name:delete;
+    animation-duration:1s;
+    animation-delay:0.85s;
+    animation-fill-mode:backwards;
+}

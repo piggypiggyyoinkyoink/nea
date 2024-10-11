@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC>
+<html lang="en">
+    {% extends "basestaff.html" %}
+    {% block title%}
+    All Questions
+    {% endblock %}
+    {%load static%}
+    {%block navigation%}
+    <div class = "navigation">
+           
+        <div class = "element" onclick = "window.location = '/'"> <img class = "home" src = "{% static 'images/home_inactive.png'%}"> </div>
+        
+        <div class = "element" onclick = "window.location = '/class/list'"> <img class = "classes" src = "{% static 'images/classes_inactive.png'%}"> </div>
+        <div class = "element" onclick = "window.location = '/users/list'"> <img class = "students" src = "{% static 'images/students_inactive.png'%}"></div>
+        <div class = "element" onclick = "window.location = '/assignments/list'"> <img class = "assignments" src = "{% static 'images/assignments_inactive.png'%}"> </div>
+        <div class = "element" onclick = "window.location = '/questions/list'"> <img class = "questions" src = "{% static 'images/questions_active.gif'%}"> </div>
+        <div class = "nameContainer"> <p class = "name"><span class = "name">{{currentUser.first_name}} {{currentUser.last_name}} </span>&nbsp;&nbsp;  |&nbsp;&nbsp; <a class = "logout" href = "/changepassword">Change Password</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a class = "logout" href = "{% url 'logout' %}">Logout</a></p> </div>
+    </div>
+    {%endblock%}
+    {% block content%}
+    <link rel = "stylesheet" href = "{%static 'css/questionlist.css'%}">
+    <body>
+        <div class = "heading"><h1> All Questions</h1><span class = "new" id = "new" onclick = "window.location = '/questions/add'">+ New </span><br> <span class = "new" id = "newCategory" onclick = "window.location='/categories/add'">New Category</span> <span class = "delete" onclick = "window.location='/categories/delete'">Delete Category</span><br> </div>
+        <div class = "table">
+            <table>
+                <tr>
+                    <th>Question Text</th>
+                    <th>Category</th>
+                    <th>Option 1</th>
+                    <th>Option 2</th>
+                    <th>Option 3</th>
+                    <th>Option 4</th>
+                    <th>Answer</th>
+                    <th colspan = "2">Actions</th>
+                </tr>
+                {% for question in questions%}
+                <tr>
+                    <td><a class = "details" href = "/questions/details/{{question.id}}">{{question.questionText}}</a></td>
+                    <td>{{question.category}}</td>
+                    <td>{{question.opt1}}</td>
+                    <td>{{question.opt2}}</td>
+                    <td>{{question.opt3}}</td>
+                    <td>{{question.opt4}}</td>
+                    <td>{{question.answer}}</td>
+                    <td class = "update"> <a class = "update" href = "/questions/update/{{question.id}}">Update</a></td>
+                    <td class="delete"> <a class = "delete" href = "/questions/delete/{{question.id}}">Delete</a></td>
+                </tr>
+                {% endfor %}
+                
+            </table>
+        </div>
+        <br><br>
+        
+    </body>
+    {% endblock %}
+    
+</html>

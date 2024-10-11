@@ -1,0 +1,59 @@
+
+h2{
+    display:inline-block;
+    font-size:28px;
+}
+label, input{
+    display:inline-block;
+}
+
+
+h1, div.content, div.category, div.submit{
+    text-align:center;
+}
+
+label{
+    font-size:20px;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom:5px;
+}
+
+input[type=checkbox]{
+    transform:scale(1.2)
+}
+div.submit{
+    width: 100%;
+    height:52px;
+    position:fixed;
+    bottom:0;
+    background-color:#dfcdcd;
+
+}
+body{margin:0}
+input[type=submit]{
+    background-color: rgba(14, 225, 63, 0.703);
+    font-size:35px;
+    border-radius: 10px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 60%);
+    margin-top: 20px;
+    transition: transform 0.25s, background-color 0.25s, box-shadow 0.25s;
+    cursor:pointer;
+    position:fixed;
+    bottom:5px;
+    width:125px;
+    transform:translateX(-62.5px);
+
+}
+input[type=submit]:hover{
+    background-color:rgba(10, 160, 45, 0.703);
+    transform: translate(-60.5px, 2px);
+    box-shadow: 1px 1px;
+    
+}
+::-webkit-scrollbar{
+    display:none;
+}
+
+label:hover{
+    cursor:pointer;
+}

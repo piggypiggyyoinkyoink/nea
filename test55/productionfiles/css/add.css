@@ -1,0 +1,135 @@
+h1, div.content{
+    text-align:center;
+}
+
+span.detail, input, select{
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    font-size:20px;
+    margin-top:5px;
+}
+
+span.detail{
+    font-weight:600;
+}
+
+input[type=text], select, input[type=email],input[type=password]{
+    border-radius:10px;
+    background-color:rgba(42, 99, 255, 0.511);
+    transition: transform 0.5s;
+    padding:5px;
+    width:30%;
+    border: 1px solid black;
+    text-align:center;
+    text-overflow: ellipsis;
+}
+
+input[type=text]:focus, input[type=email]:focus ,input[type=password]:focus , select:focus{
+    background: url("/static/images/gold.gif") 100% no-repeat;
+    background-size:cover;
+}
+
+input[type=text]:hover, input[type=email]:hover, input[type=password]:hover,  select:hover{
+    transform:scale(1.1)
+}
+
+input[type=submit]{
+    background-color: rgba(14, 225, 63, 0.703);
+    font-size:35px;
+    border-radius: 10px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 60%);
+    margin-top: 20px;
+    transition: transform 0.25s, background-color 0.25s, box-shadow 0.25s;
+    cursor:pointer;
+
+}
+input[type=submit]:hover{
+    background-color:rgba(10, 160, 45, 0.703);
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px;
+    
+}
+
+@keyframes heading{
+    from {transform: translateY(-100px) };
+    to {transform: translateY(0px) ;}
+}
+
+h1{
+    animation-name:heading;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes detail{
+    from {transform: translateY(100px); opacity:0%; scale:0.5; };
+    to {transform: translateY(0px) ; opacity:100%; scale:1;}
+}
+
+#fn{
+    animation-name:detail;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.2s;
+}
+
+span{
+    display:inline-block;
+}
+
+#ln{
+    animation-name:detail;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.3s;
+}
+
+#ea{
+    animation-name:detail;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.4s;
+}
+
+#pw{
+    animation-name:detail;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.5s;
+}
+
+#cn, #class{
+    animation-name:detail;
+    animation-duration: 1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.6s;
+}
+
+
+@keyframes submit{
+    from {transform: scale(0%) translateY(200px); opacity:0%;}
+    to{transform:scale(1) translateY(0px); opacity:100%;}
+}
+
+input[type="submit"]{
+    animation-name:submit;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+    animation-delay:0.6s;
+}
+
+::placeholder{
+    font-style: italic;
+    opacity:90%;
+}
+
+select{
+    display:inline-block;
+}
+
+select *{
+    background-color:rgba(240, 153, 14, 0.293);
+    
+}
+::-webkit-scrollbar{
+    display:none;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC>
+<html>
+{% extends 'base.html' %}
+{%load static%}
+<head>
+{% block title %}Login{% endblock %}
+</head>
+
+{% block content %}
+<link rel = "stylesheet" href="{% static '/css/login.css'%}">
+  <h1>Login</h1>
+  {% if form.errors %}
+      <div class = "container"><div class = "issue"><div class = "image"><img class = "issue" src="{% static 'images/exclamation_red.png' %}"></div><div class = "message"><span>Your username or password is incorrect</span></div></div></div>
+  {% endif %}
+
+
+  <div class = "content">
+    <form method="post">
+      {% csrf_token %}
+      
+      
+      <p>
+      <label id = "username" for="id_username">Username:</label><br>
+      <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+      </p>
+    
+      <p>
+      <label id = "password" for="id_password">Password:</label><br>
+      <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
+      </p> 
+        
+      <p><button id = "letsago" type="submit">Lets Go!</button></p>
+    </form>
+  </div>
+{% endblock %}
+</html>

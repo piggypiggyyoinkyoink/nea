@@ -1,0 +1,29 @@
+{%extends "base.html"%}
+{%load static%}
+
+{%block title%} Uh Oh! {%endblock%}
+
+{%block navigation%}
+    <div class = "navigation">
+              
+                
+        <div class = "element" onclick = "window.location = '/'"> <img class = "home" src = "{% static 'images/home_inactive.png'%}"> </div>
+        <div class = "element" onclick = "window.location = '/student/assignments/list'"> <img class = "assignments" src = "{% static 'images/assignments_inactive.png'%}"> </div>
+        <div class = "element" onclick = "window.location = '/quiz/start'"> <img class = "quizzes" src = "{% static 'images/questions_inactive.png'%}"> </div>
+    
+        <div class = "element" onclick = "window.location = '/leaderboard'"> <img class = "leaderboard" src = "{% static 'images/lb_inactive.png'%}"></div>
+        <div class = "nameContainer"> <p class = "name"><span class = "name">{{currentUser.first_name}} {{currentUser.last_name}} </span>&nbsp;&nbsp;  |&nbsp;&nbsp; <a class = "logout" href = "/changepassword">Change Password</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a class = "logout" href = "{% url 'logout' %}">Logout</a></p> </div>
+    
+      </div>
+{%endblock%}
+
+{%block content%}
+<link rel = "stylesheet" href = "{%static 'css/incorrect.css' %}">
+
+    <div class = "content">
+      <h1>Uh oh! Thats not quite right</h1>
+      <br><br>
+
+      <a href = "/student/assignments/{{id}}/question">Next Question</a>
+    </div>
+{%endblock%}

@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC>
+    <html lang = "en" >
+        {% extends "basestaff.html" %}
+        {%load static%}
+        {%block title%}
+        {{assignment.name}}
+        {% endblock%}
+
+
+        {%block navigation%}
+        <div class = "navigation">
+            
+            <div class = "element" onclick = "window.location = '/'"> <img class = "home" src = "{% static 'images/home_inactive.png'%}"> </div>
+            
+            <div class = "element" onclick = "window.location = '/class/list'"> <img class = "classes" src = "{% static 'images/classes_inactive.png'%}"> </div>
+            <div class = "element" onclick = "window.location = '/users/list'"> <img class = "students" src = "{% static 'images/students_inactive.png'%}"></div>
+            <div class = "element" onclick = "window.location = '/assignments/list'"> <img class = "assignments" src = "{% static 'images/assignments_inactive.png'%}"> </div>
+            <div class = "element" onclick = "window.location = '/questions/list'"> <img class = "questions" src = "{% static 'images/questions_inactive.png'%}"> </div>
+            <div class = "nameContainer"> <p class = "name"><span class = "name">{{currentUser.first_name}} {{currentUser.last_name}} </span>&nbsp;&nbsp;  |&nbsp;&nbsp; <a class = "logout" href = "/changepassword">Change Password</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a class = "logout" href = "{% url 'logout' %}">Logout</a></p> </div>
+        </div>
+        {%endblock%}
+
+        {% block content %}
+        <link rel = "stylesheet" href = "{% static 'css/assignmentdetails.css'%}">
+        <body>
+            <div class = "heading" id = "mainHeading"><h1> {{ assignment.name}} </h1><div class = "delete" onclick = "window.location ='/assignments/delete/{{assignment.id}}'">Delete</div></div>
+
+            <div class = "details">
+                <div id = "class"><span class = "details" id = "class"><b> Class:</b> {{ assignment.className}}</span></div><br>
+                <div id = "date"><span class = "details" id = "date"><b> Date due: </b>
+
+                <form class = "date" method = "POST" action = "/assignments/details/duedate/{{assignment.id}}">
+                    {%csrf_token%}
+                    <input type = "date" name = "dd" onchange ="this.form.submit();" value = {{date}} >
+                </form></span>
+                </div>
+            </div>
+            {%if not past%}
+            <div class = "heading" ><h2 id = "questionHeading"> Questions</h2> <div class = "update" onclick = "window.location = '/assignments/details/update/{{assignment.id}}'">Change</div></div>
+            {%else%}
+            <div class = "heading" ><h2 id = "questionHeading2"> Questions</h2> </div>
+
+            {%endif%}
+            <div class = "questions">
+                {% for x in questions %}
+                <div class = "question"> {{ x.questionText}} </div>
+                {% endfor %}
+            </div>
+            <br>
+            <div class = "heading" id = "scoresHeading"><h2> Student Scores</h2></div>
+                <div class = "container">
+                    {%for x in studentResults%}
+                        {% if x.completed%}
+                            {%if x.pass%}
+                                <div class = "studentPass"  onclick = "window.location='/assignments/details/scores/{{assignment.id}}/{{x.student.id}}'">
+                                    <span class = "studentName">{{x.student.first_name}} {{x.student.last_name}}</span><br>
+                                    <span class = "studentTarget"> Target: {{x.student.targetGrade}}</span><br>
+                                    <span class = "studentScore"> Score: {{x.score}}</span><br>
+                                    <span class = "studentGrade"> Grade: {{x.grade}}</span><br>
+                                </div>
+                            {%else%}
+                                <div class = "studentFail" onclick = "window.location='/assignments/details/scores/{{assignment.id}}/{{x.student.id}}'">
+                                    <span class = "studentName">{{x.student.first_name}} {{x.student.last_name}}</span><br>
+                                    <span class = "studentTarget">Target: {{x.student.targetGrade}}</span><br>
+                                    <span class = "studentScore"> Score: {{x.score}}</span><br>
+                                    <span class = "studentGrade"> Grade: {{x.grade}}</span><br>
+
+                                </div>
+                            {%endif%}
+                        {%else%}
+                            <div class = "studentIncomplete" onclick = "window.location='/assignments/details/scores/{{assignment.id}}/{{x.student.id}}'">
+                                <span class = "studentName">{{x.student.first_name}} {{x.student.last_name}}</span><br>
+                                <span class = "studentTarget">Target: {{x.student.targetGrade}}</span><br>
+                                <span class = "notStarted"> Not Attempted</span><br>
+                                <span class = "studentGrade"> Grade: U</span>
+                            </div>
+                        {%endif%} 
+                    {%endfor%}
+                </div>
+
+
+        </body>
+        {% endblock %}
+    </html>

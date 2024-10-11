@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC>
+<html lang="en">
+    {% extends "basestaff.html" %}
+    {% block title%}
+    Assignments
+    {% endblock %}
+
+    {%load static%}
+    {%block navigation%}
+    <div class = "navigation">
+           
+        <div class = "element" onclick = "window.location = '/'"> <img class = "home" src = "{% static 'images/home_inactive.png'%}"> </div>
+        
+        <div class = "element" onclick = "window.location = '/class/list'"> <img class = "classes" src = "{% static 'images/classes_inactive.png'%}"> </div>
+        <div class = "element" onclick = "window.location = '/users/list'"> <img class = "students" src = "{% static 'images/students_inactive.png'%}"></div>
+        <div class = "element" onclick = "window.location = '/assignments/list'"> <img class = "assignments" src = "{% static 'images/assignments_active.gif'%}"> </div>
+        <div class = "element" onclick = "window.location = '/questions/list'"> <img class = "questions" src = "{% static 'images/questions_inactive.png'%}"> </div>
+        <div class = "nameContainer"> <p class = "name"><span class = "name">{{currentUser.first_name}} {{currentUser.last_name}} </span>&nbsp;&nbsp;  |&nbsp;&nbsp; <a class = "logout" href = "/changepassword">Change Password</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a class = "logout" href = "{% url 'logout' %}">Logout</a></p> </div>
+    </div>
+    {%endblock%}
+
+    {% block content%}
+    <link rel = "stylesheet" href = "{%static 'css/assignmentlist.css' %}" >
+    <body>
+        <div class = "superheading"><h1 class = "heading2"> Assignments </h1><div class = "newAssignment" onclick = "window.location = '/assignments/add'" ><span> + New </span></div></div>
+        
+        <h2 class = "heading" id = "upcoming"> Upcoming</h2>
+        <div class = "container2">
+            {% for assignment in allAssignments%}
+            <div class = "displayedAssignments" onclick = "window.location = '/assignments/details/{{assignment.id}}'" id = "upcomingAssignment">
+                <span class = "assignmentName">{{assignment.name}}</span><br>
+                <span class = "assignmentClass">{{assignment.className_id}}</span><br>
+                <span class = "assignmentQuestions">{{assignment.questions}} Question{%if assignment.questions != 1%}s{%endif%}</span><br>
+                <span class = "dueDate"> Due in {{assignment.daysLeft}} days</span><br>
+                <span class = "assignmentStudents"> {{assignment.noCompleted}} / {{assignment.total}} Students completed </span><br>
+            </div>
+            {%endfor%}
+        </div>
+        
+        <h2 class = "heading" id = "past">Past</h2>
+        <div class = "container2">
+            {% for assignment in pastAssignments%}
+            <div class = "displayedAssignments" onclick = "window.location = '/assignments/details/{{assignment.id}}'" id = "pastAssignment">
+                <span class = "assignmentName">{{assignment.name}}</span><br>
+                <span class = "assignmentClass">{{assignment.className_id}}</span><br>
+                <span class = "assignmentQuestions">{{assignment.questions}} Question{%if assignment.questions != 1%}s{%endif%}</span><br>
+                <span class = "dueDate"> Due {{assignment.dueDate}}</span><br>
+                <span class = "assignmentStudents"> {{assignment.noCompleted}} / {{assignment.total}} Students completed </span><br>
+            </div>
+            {%endfor%}
+        </div>
+        
+
+        <br><br>
+        
+    </body>
+    {% endblock %}
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC>
+<html lang="en">
+    {% extends "basestaff.html" %}
+    {% load static%}
+   
+    {%block title%}
+    {{class.name}}
+    {% endblock %}
+    {%block navigation%}
+    <div class = "navigation">
+           
+        <div class = "element" onclick = "window.location = '/'"> <img class = "home" src = "{% static 'images/home_inactive.png'%}"> </div>
+        
+        <div class = "element" onclick = "window.location = '/class/list'"> <img class = "classes" src = "{% static 'images/classes_inactive.png'%}"> </div>
+        <div class = "element" onclick = "window.location = '/users/list'"> <img class = "students" src = "{% static 'images/students_inactive.png'%}"></div>
+        <div class = "element" onclick = "window.location = '/assignments/list'"> <img class = "assignments" src = "{% static 'images/assignments_inactive.png'%}"> </div>
+        <div class = "element" onclick = "window.location = '/questions/list'"> <img class = "questions" src = "{% static 'images/questions_inactive.png'%}"> </div>
+        <div class = "nameContainer"> <p class = "name"><span class = "name">{{currentUser.first_name}} {{currentUser.last_name}} </span>&nbsp;&nbsp;  |&nbsp;&nbsp; <a class = "logout" href = "/changepassword">Change Password</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a class = "logout" href = "{% url 'logout' %}">Logout</a></p> </div>
+    </div>
+    {%endblock%}
+
+    {%block content%}
+    <link rel = "stylesheet" href = "{% static '/css/classdetails.css'%}">
+    <body>
+        <div class = "superheading"><h1> Class {{ class.name }}</h1></div><br>
+        <div class = "heading" id = "students"><h2> Students</h2> <div class = "new" id = "newStudent" onclick = "window.location = '/users/add/?class={{class.id}}'"><span class = "new" >+ New</span></div></div>
+        <div class = "container">
+            {% for x in students %}
+            {%if x.warnings%}
+                <div class = "studentWarnings" onclick = "window.location = '/users/details/{{x.id}}'">
+                <span class = "studentName"> {{ x.first_name }} {{ x.last_name}}</span><br>
+                <span class = "studentTarget"> Target: {{x.targetGrade}}</span><br>
+                <span class = "studentAssignments"> {{x.done}} / {{x.set}} Assignments completed</span><br>
+                <span class = "studentAverage"> {{x.average}}% Average</span>
+                </div>
+            {%else%}
+            <div class = "student" onclick = "window.location = '/users/details/{{x.id}}'">
+            <span class = "studentName"> {{ x.first_name }} {{ x.last_name}}</span><br>
+            <span class = "studentTarget"> Target: {{x.targetGrade}}</span><br>
+            <span class = "studentAssignments"> {{x.done}} / {{x.set}} Assignments completed</span><br>
+            <span class = "studentAverage"> {{x.average}}% Average</span>
+            </div>
+            {%endif%}
+            {% endfor %}
+        </div>
+        
+        <br>
+        <div class = "heading" id = "assignments"><h2> Assignments</h2><div class = "new" id = "newAssignment" onclick = "window.location = '/assignments/add/?class={{class.id}}'"><span class = "new">+ New</span></div></div>
+        <div class = "container">
+            {% for x in assignments%}
+            <div onclick = "window.location = '/assignments/details/{{x.id}}'" class = "assignment">
+                <span class = "assignmentName">{{ x.name}}</span><br>
+                <span class = "assignmentDue"> Due {{x.dueDate}}</span><br>
+                <span class = "assignmentCompleted">{{x.done}} / {{x.set}} Students Completed</span>
+            </div>
+            {% endfor %}
+        </div>
+        <br>
+        <div class = "delete" ><span onclick = "window.location = '/class/delete/{{class.id}}'" class = "delete">Delete Class</span></div>
+
+        <br><br>
+
+    </body>
+    {% endblock %}
+</html>

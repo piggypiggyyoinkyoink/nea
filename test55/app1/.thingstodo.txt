@@ -1,0 +1,48 @@
+DONE!       studentassignmentquestion.html fix question number
+DONE!       do all css to remove ugliness
+PROBABLY UNNECESSARY (due to #5)      staff homepage view set limitation for number of assignments on homepage to avoid a mess
+DONE!   probably completely redo staff homepage
+DONE!      allow teachers to set target grades for students which affect their passmark for assignments and their exclamationmark status
+DONE!       create user if classname is null dont create user
+DONE!       assignment details page make class name work properly
+DONE!       assignment complete tell user where they screwed up and didnt screw up
+DONE! - implemented as warnings on studentdetails       exclamationmark page or incorporate into staff home page
+DONE!        updating student target grade doesnt redirect all weird to student list, prob create a new view and ctrl-c ctrl-v the create target grade one
+DONE!       make email == username
+PROBABLY UNNECESSARY        add back button to pages that arent the 5 main ones
+DONE!        fix assignment due in negative days
+DONE!       for teacher set assignment questions are by default only at the level of the class also add button to allow to select categories for other levels in case that is neeeded
+DONE!       teachers can see what each student got in each assignment
+DONE!       see if background gradient is possible to not move around when scrolling
+DONE!       studentdetails change questions answered to assignments completed + add quizzes completed
+DONE!       remove the option to change the questions of past assignments bc why would you
+DONE!       quiz start delete all other quizzes clogging up the db
+DONE!(overflow-x:hidden)        figure out why  animations causes weird green area to spawn in briefly (its probably the use of translate instead of left property)
+DONE!       why do some button hover effects scale in one direction only?!?!?
+DONE!       make animations zoom zoom so less wait for it to be doned
+DONE!       student assignment question infos so teachers can see exactly where students screwed up
+DONE!       studentslist make them red like in class detials to signofy warnings
+
+DONE!       student pages - see where they messed up on each completed assignment
+DONE    do leaderboards or else death
+DONE!       student assignment page shows results for past assignments
+DONE!       remove student assignment complete by bypassing it
+DONE        quiz complete add each question tick/cross etc
+DONE!       move student past assignments to its own page and replace with score by category.
+
+DONE!       studentlist why does studentlist go off the page
+DONE!       actually implement thew page for delete category (button)
+
+MEH     css animations bc they cool
+
+DONE!       make it impossible to set questions where correct answer isnt any of the options.
+DONE!       change password add some kind of restrictions so u cant have the letter a as a pwword
+
+add question make answer field multiplechoice (1-4) instead of copypasting the option etxt
+maybe make teachers not be students as well lmao
+somehow organise assignment add questions so it isnt a clusterduck
+different colours for past assignments etc depending on no of students not complete
+studentcategory so students can see which categories are woerst.
+make game over messages at assignment complete depend on student target grade
+remove all #REDUNDANT CODE
+add message for when thigns are empty (no assignments yet etc)

@@ -1,0 +1,41 @@
+div.block, div.block1{
+    display:inline-block;
+    
+}
+div.block1{
+    width: 33%;
+}
+div.block{
+    width:15%;
+}
+
+span.header{
+    font-weight:bold;
+}
+div.correctAnswer, div.incorrectAnswer{
+    width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
+    padding: 5px;
+    
+    border-radius: 10px;
+}
+div.answers{
+    width: 100%
+}
+
+h1, h2, h3{
+    text-align: center;
+}
+
+div.correctAnswer{
+    border: 2px solid lime; /*change this at some point*/
+    background-color:lightgreen;
+    
+}
+
+div.incorrectAnswer{
+    border: 2px solid red;
+    background-color:rgb(238, 144, 144);
+
+}

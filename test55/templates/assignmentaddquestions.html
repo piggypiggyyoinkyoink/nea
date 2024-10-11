@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+    <html lang="en">
+        {% extends "basestaff.html" %}
+        {%load static%}
+        {%block title%}
+        Edit {{thisAssignment.name}}
+        {% endblock %}
+
+        {%block navigation%}
+        <div class = "navigation">
+            
+            <div class = "element" onclick = "window.location = '/'"> <img class = "home" src = "{% static 'images/home_inactive.png'%}"> </div>
+            
+            <div class = "element" onclick = "window.location = '/class/list'"> <img class = "classes" src = "{% static 'images/classes_inactive.png'%}"> </div>
+            <div class = "element" onclick = "window.location = '/users/list'"> <img class = "students" src = "{% static 'images/students_inactive.png'%}"></div>
+            <div class = "element" onclick = "window.location = '/assignments/list'"> <img class = "assignments" src = "{% static 'images/assignments_inactive.png'%}"> </div>
+            <div class = "element" onclick = "window.location = '/questions/list'"> <img class = "questions" src = "{% static 'images/questions_inactive.png'%}"> </div>
+            <div class = "nameContainer"> <p class = "name"><span class = "name">{{currentUser.first_name}} {{currentUser.last_name}} </span>&nbsp;&nbsp;  |&nbsp;&nbsp; <a class = "logout" href = "/changepassword">Change Password</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a class = "logout" href = "{% url 'logout' %}">Logout</a></p> </div>
+        </div>
+        {%endblock%}
+
+        {% block content %}
+        <link rel = "stylesheet" href = "{%static 'css/assignmentaddquestions.css'%}">
+        <body>
+            <h1> Questions in {{thisAssignment.name}} for class {{thisClass}}</h1>
+
+            <div class = "content">
+                <div class = "form">
+                <form action = "/assignments/details/update/{{id}}/" method = "post">
+                    {%csrf_token%}
+                    
+                    <input  type = "radio" onchange="this.form.submit();" name = "level" value = "1" id = "radio1" {%if level == "1"%}checked {%endif%}>
+                    <label id = "radio" for = "radio1" >A level questions</label>
+                    <input type = "radio" onchange="this.form.submit();" name = "level" value = "2" id = "radio2" {%if level == "2"%}checked {%endif%}>
+                    <label id = "radio" for = "radio2">GCSE questions</label>
+                    
+                </form>
+                    
+
+                
+                <form action = "/assignments/details/update/updaterecord/{{id}}" method = "post">
+                    {% csrf_token %}
+                    {% for x in questions %}
+                        {% if x.displayQuestionCategory%}
+                            
+                            </div>
+                            <div class = "category">
+                            <h2>{{x.questionCategory}}</h2><br>
+                            
+                        {%endif%}
+                        
+                        {% if x.checked %}
+                            <input type = "checkbox" class = "question"id = "question{{x.id}}" name = "question{{x.id}}" checked>
+                            <label class = "question" for = "question{{x.id}}" id = "{{x.questionCategory}}Question">{{x.questionText}}</label>
+                            <br>
+                        {% else %}
+                            <input type = "checkbox" class = "question" id = "question{{x.id}}" name = "question{{x.id}}">
+                            <label class = "question" for = "question{{x.id}}" id = "{{x.questionCategory}}Question">{{x.questionText}}</label>
+                            <br>
+                        {% endif %}
+                        
+                    {% endfor %}
+                    </div>
+
+                    
+                    <div class = "submit">
+                        <input type = "submit" value = "Submit">
+                    </div>
+                </form>
+            
+            </div>
+            <br><br><br><br>
+        </body>
+        {% endblock %}
+    </html>

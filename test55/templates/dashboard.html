@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  {% extends 'base.html' %}
+
+  {% block title %}Dashboard{% endblock %}
+  {%load static%}
+  {%block navigation%}
+  <div class = "navigation">
+          
+            
+    <div class = "element" onclick = "window.location = '/'"> <img class = "home" src = "{% static 'images/home_active.gif'%}"> </div>
+    <div class = "element" onclick = "window.location = '/student/assignments/list'"> <img class = "assignments" src = "{% static 'images/assignments_inactive.png'%}"> </div>
+    <div class = "element" onclick = "window.location = '/quiz/start'"> <img class = "quizzes" src = "{% static 'images/questions_inactive.png'%}"> </div>
+
+    <div class = "element" onclick = "window.location = '/leaderboard'"> <img class = "leaderboard" src = "{% static 'images/lb_inactive.png'%}"></div>
+    <div class = "nameContainer"> <p class = "name"><span class = "name">{{currentUser.first_name}} {{currentUser.last_name}} </span>&nbsp;&nbsp;  |&nbsp;&nbsp; <a class = "logout" href = "/changepassword">Change Password</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a class = "logout" href = "{% url 'logout' %}">Logout</a></p> </div>
+
+  </div>
+  {%endblock%}
+
+  {% block content %}
+  <link rel = "stylesheet" href = "{%static 'css/dashboard.css'%}">
+    
+      
+      <h1>Welcome, {{currentUser.first_name}}</h1>
+      <div class = "content">
+        <p class = "p" id = "tg"> Your target grade: <b>{{me.targetGrade}}</b></p>
+        {%if howMany != 0 and msg != False%}
+        <p class = "p" id = "upcoming"><b> {{msg}}!</b></p>
+        {%endif%}
+        {% if howMany == 0%}
+        <h2 id = "upcoming"> You have no upcoming assignments </h2>
+        {%if msg == False%}
+        <p class = "p" id = "upcoming"> Maybe take a <b><a class= "quiz" href = "/quiz/start">revision quiz</a></b> instead ;)</p>
+        {%else%}
+        <p class = "p" id = "upcoming"><b> {{msg}}!</b></p>
+        {%endif%}
+        <br>
+        {%else%}
+        <h2 id = "upcoming"> Your Upcoming Assignments </h2>
+        <div class = "upcomingAssignments">
+          {% for assignment in assignments%}
+            <div class = "eachAssignment" onclick = "window.location = '/student/assignments/{{assignment.id}}'">
+              <span class = "assignmentName"> {{assignment.name}}</span><br>
+              <span class = "questions">{{assignment.questions}} questions</span><br>
+              <span class = "dueDate"> Due Date: {{assignment.dueDate}}</span>
+            </div>
+          {% endfor %}
+
+        </div>
+        
+        
+        {%endif%}
+        
+        <h2 id = "categories">Scores by Category</h2>
+        <div class = "categories">
+          {%for category in categories%}
+            {%if category.fail%}
+              <div class = "failCategory">
+                  <span class = "bcName">{{category.name}}</span><br>
+                  <span class = "bcAverage">{{category.average}}%</span><br>
+                  <span class = "bcTotal"> of {{category.total}} questions <br> answered correctly</span>
+              </div>
+            {%else%}
+          
+              <div class = "passCategory">
+                <span class = "bcName">{{category.name}}</span><br>
+                <span class = "bcAverage">{{category.average}}%</span><br>
+                <span class = "bcTotal"> of {{category.total}} questions <br> answered correctly</span>
+              </div>
+            {%endif%}
+          
+          {%endfor%}
+        </div>
+        
+
+      </div>
+      
+      
+  {% endblock %}
+</html>

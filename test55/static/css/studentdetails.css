@@ -1,0 +1,300 @@
+div.details{
+    font-size:25;
+    margin: auto;
+    text-align: center;
+}
+
+.details{
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+h1{
+    text-align: center;
+}
+span.update{
+    margin-left: 15px;
+    text-align:center;
+    border: 2px solid green;
+    background-color:lightgreen;
+    border-radius: 8px;
+    font-size: 25px;
+    padding: 2px;
+    transition: transform 0.25s, background-color 0.25s;
+    display:inline-block;
+
+}
+span.update:hover{
+    transform: scale(1.1);
+    cursor:pointer;
+    background-color: chartreuse;
+}
+
+span.delete{
+    
+    text-align:center;
+    border: 2px solid rgb(255, 25, 25);
+    background-color:rgb(238, 144, 144);
+    border-radius: 8px;
+    font-size: 25px;
+    padding: 2px;
+    transition: transform 0.25s, background-color 0.25s;
+    display:inline-block;
+    padding:2px;
+    
+
+}
+span.delete:hover{
+    transform: scale(1.1);
+    cursor:pointer;
+    background-color: rgb(255, 115, 0);
+}
+
+div.detail, div.update{
+    display:inline-block;
+}
+
+div.detail{
+    margin-top:20px;
+    margin-bottom:20px;
+}
+
+
+div.update{
+    width:80px;
+}
+
+#class, #updateTarget, #target, #updateClass{
+    transform: translateX(40px);
+}
+
+.worstCategory, .bestCategory{
+    display:inline-block;
+    margin:5px;
+    margin-top:0px;
+    padding:4px;
+    background-color:aliceblue;
+    font-size:22px;
+}
+
+div.bestCategory{
+    border: 2px solid chartreuse;
+    border-radius:10px;
+}
+
+div.worstCategory{
+    border: 2px solid red;
+    border-radius:10px;
+}
+
+.bcName span{
+    font-size:25px;
+    font-weight:600;
+}
+.bcAverage{
+    font-size:30px;
+}
+
+
+@keyframes heading{
+    from {transform: translateY(-200px)};
+    to {transform: translateY(0px);}
+}
+
+h1{
+    animation-name:heading;
+    animation-duration:1s;
+    animation-fill-mode: both;
+}
+
+@keyframes detail{
+    from {transform: scale(0%) translateY(-100px); opacity:0%;}
+    to{transform:scale(1) translateY(0px); opacity:100%;}
+}
+
+@keyframes detail2{
+    from{transform: scale(0%) translateY(-100px) translateX(40px); opacity:0%;}
+    to{transform:scale(1) translateY(0px) translateX(40px); opacity:100%;}
+}
+
+#class{
+    animation-name: detail2;
+    animation-delay:0.15s;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+}
+
+#username{
+    animation-name: detail;
+    animation-delay:0.25s;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+}
+
+#target{
+    animation-name: detail2;
+    animation-delay:0.35s;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+}
+
+#quizzes{
+    animation-name: detail;
+    animation-delay:0.45s;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+}
+
+#quizAverage{
+    animation-name: detail;
+    animation-delay:0.55s;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+}
+#assignments{
+    animation-name: detail;
+    animation-delay:0.65s;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+}
+
+
+#average{
+    animation-name: detail;
+    animation-delay:0.75s;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+}
+
+.bestCategory, .worstCategory{
+    animation-name: detail;
+    animation-delay:0.85s;
+    animation-duration:1s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes update{
+    from {transform:scale(0.5) translateX(40px); opacity: 0%;}
+    to {transform:scale(1) translateX(40px); opacity: 100%;}
+}
+
+#updateClass{
+    animation-name:update;
+    animation-duration:0.5s;
+    animation-delay:0.85s;
+    animation-fill-mode: backwards;
+}
+
+#updateTarget{
+    animation-name:update;
+    animation-duration: 0.5s;
+    animation-delay: 1.05s;
+    animation-fill-mode:backwards;
+}
+
+@keyframes delete{
+    from {transform: scale(0%) translateY(200px); opacity:0%;}
+    to{transform:scale(1) translateY(0px); opacity:100%;}
+}
+
+div.delete{
+    animation-name:delete;
+    animation-duration:1s;
+    animation-delay:0.85s;
+    animation-fill-mode:backwards;
+}
+
+
+div.reset{
+    animation-name:delete;
+    animation-duration:1s;
+    animation-delay:0.85s;
+    animation-fill-mode:backwards;
+}
+div.warnings{
+    text-align:center;
+    width: fit-content;
+    margin:auto;
+    margin-top:80px;
+    
+    font-size:20px;
+    color:whitesmoke;
+}
+div.warning{
+    height:60px;
+    border-radius:9px;
+    border: 2px solid red;
+    background-color: rgba(42, 36, 36, 0.8);
+}
+
+div.warnings div{
+    display:inline-block;
+    padding:5px;
+    margin:auto;
+    
+}
+div.image{
+    padding:0;
+
+}
+div.image, div.message{
+    display:inline-block;
+}
+h1{
+    margin-top:5px;
+    margin-left:0px;
+}
+
+img.warning{
+    display:inline-block;
+    margin:0;
+}
+
+div.message{
+    margin:auto;
+    transform:translateY(-16px);
+}
+
+
+
+@keyframes warning{
+    from {transform: translateY(-200px) scale(0); opacity:0%};
+    to {transform: translateY(0px) scale(1); opacity: 100%};
+}
+
+@keyframes flash{
+    0% {transform:scale(1);}
+    50%{transform:scale(1.1);}
+    100%{transform:scale(1);}
+}
+
+div.warning{
+    animation-name:warning;
+    animation-duration:1s;
+
+    animation-name:flash;
+    animation-duration:2s;
+    animation-iteration-count: infinite;
+}
+
+::-webkit-scrollbar{
+    display:none;
+}
+
+div.reset{
+    width:fit-content;
+    margin:auto;
+    text-align:center;
+    border: 2px solid rgb(255, 153, 0);
+    background-color:rgb(238, 218, 144);
+    border-radius: 8px;
+    font-size: 25px;
+    transition: transform 0.25s, background-color 0.25s;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+    padding:2px;
+    margin-bottom:8px;
+}
+
+div.reset:hover{
+    transform:scale(1.1);
+    cursor:pointer;
+    background-color: rgb(251, 228, 56);
+}

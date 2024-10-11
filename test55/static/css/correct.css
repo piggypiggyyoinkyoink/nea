@@ -1,0 +1,27 @@
+body{
+    background-color:lightgreen;
+    
+}
+
+div.content{
+    text-align:center;
+}
+
+h1{
+    font-size:70px;
+}
+
+div.content a{
+    font-size:30px;
+}
+
+div.content a, div.content a:visited{
+    color: #1ca0ee;
+    transition: color 0.5s;
+    font-family: Tahoma, Geneva, Verdana, sans-serif;
+
+}
+div.content a:hover{
+    color:#1c3cee;
+    
+}
